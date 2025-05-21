@@ -255,6 +255,7 @@
     from { width: 0 }
     to { width: 22ch } /* Longitud del texto './start-career.sh' */
   }
+
   /* Aparición gradual de las siguientes líneas */
 .fade-line {
   opacity: 0;
@@ -262,17 +263,17 @@
 
 .delay-1 {
   animation: fadeIn 0s ease forwards;
-  animation-delay: 3s;
+  animation-delay: 6s;
 }
 
 .delay-2 {
   animation: fadeIn 0s ease forwards;
-  animation-delay: 3.5s;
+  animation-delay: 6.5s;
 }
 
 .delay-3 {
   animation: fadeIn 0s ease forwards;
-  animation-delay: 9s;
+  animation-delay: 12s;
 }
 
 @keyframes fadeIn {

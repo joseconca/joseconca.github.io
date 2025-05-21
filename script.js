@@ -36,7 +36,7 @@ function copyEmail() {
       percentSpan1.textContent = percent1 + '%';
       if (percent1 === 100) clearInterval(interval);
     }, 25); // Ajusta velocidad
-  }, 4500); // Espera
+  }, 7500); // Espera
 
   let percent = 0;
   const percentSpan = document.getElementById('percent2');
@@ -46,10 +46,10 @@ function copyEmail() {
       percentSpan.textContent = percent + '%';
       if (percent === 99) clearInterval(interval);
     }, 100); // Ajusta velocidad
-  }, 10000); // Espera
+  }, 13000); // Espera
 
   setTimeout(() => {
     const check = document.getElementById('ready-check');
     check.classList.remove('hidden');
     check.classList.add('visible');
-  }, 8000); // 2s después de "Web Dev Ready"
+  }, 10100); // 2s después de "Web Dev Ready"
