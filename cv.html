@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV José Conca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="./style.css" rel="stylesheet">
+  <script type="text/javascript" src="./script.js" defer></script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <div style="display:flex; align-items:center;">
+        <div class="avatar"></div>
+        <div>
+          <h1 class="title">José Conca<span class="cursor-blink"></span></h1>
+          <div class="subtitle">Desarrollador Web Junior</div>
+        </div>
+      </div>
+      <button id="theme-toggle">Modo Claro</button>
+    </div>
+    <div class="column">
+      <div class="console">
+        <h2>Contacto</h2>
+        <code>email: <span id="email-text">vl.conca@gmail.com</span> <button onclick="copyEmail()">Copiar</button></code>
+        <code>phone: +34 680 398 509</code>
+        <code>location: Telde, Las Palmas</code>
+        <code>github: <a href="https://github.com/joseconca" target="_blank">github.com/joseconca</a></code>
+      </div>
+      <div class="console">
+        <h2>Extras</h2>
+        <code>discapacidad: 39%</code>
+        <code>carné: B</code>
+      </div>
+      <div class="console">
+        <h2>Herramientas</h2>
+        <div class="grid-2">
+          <div>Python</div><div>JavaScript</div>
+          <div>Java</div><div>Docker</div>
+          <div>Azure</div><div>SQL</div>
+          <div>Git</div><div>HTML/CSS</div>
+        </div>
+      </div>
+      <div class="console">
+        <h2>Idiomas</h2>
+        <div class="lang" data-tooltip="Nativo"><span class="bar-label">Español</span><div class="bar-bg"><div class="bar-fill animate-fill" style="width:100%;"></div></div></div>
+        <div class="lang" data-tooltip="Nativo"><span class="bar-label">Valenciano</span><div class="bar-bg"><div class="bar-fill animate-fill" style="width:100%;"></div></div></div>
+        <div class="lang" data-tooltip="80% Avanzado"><span class="bar-label">Inglés</span><div class="bar-bg"><div class="bar-fill animate-fill" style="width:80%;"></div></div></div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="console">
+        <h2>Perfil Profesional</h2>
+        <ul>
+          <li>Especialista Web (2022–2025) con fundamentos en Ingeniería Informática (incompleto).</li>
+          <li>Experiencia en frontend, backend, Azure y entrenamiento de IA.</li>
+          <li>Metodología ágil con <span data-tooltip="Reuniones diarias de sincronización">Daily Scrum</span>.</li>
+        </ul>
+      </div>
+      <div class="console">
+        <h2>Experiencia Profesional</h2>
+        <code>role --company Inerza --period <span data-tooltip="Marzo 2025 a Junio 2025">"Mar 2025 – Jun 2025"</span></code>
+        <ul>
+          <li>Fine-tuning de modelos de IA y pipelines de datos.</li>
+          <li>Integración de librerías AI en proyectos Web.</li>
+          <li>Despliegue de contenedores Docker en Azure.</li>
+        </ul>
+      </div>
+      <div class="console">
+        <h2>Formación Académica</h2>
+        <ul>
+          <li>Ciclo Superior en Desarrollo Web – IES El Rincón (<span data-tooltip="Septiembre 2022 a Junio 2025">2022–2025</span>)</li>
+          <li>Grado en Ingeniería Informática – UPV (<span data-tooltip="Pendiente de realizar el trabajo de fin de grado. Resto de créditos superados.">2010–pendiente</span>)</li>
+        </ul>
+      </div>
+      <div class="console">
+        <h2>Consola</h2>
+        <code>&gt; ./start-career.sh</code>
+        <code>Loading skills...</code>
+        <code>✔ Web Dev Ready</code>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

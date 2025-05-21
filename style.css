@@ -1,0 +1,181 @@
+:root {
+    --console-bg: #222;
+    --console-text: #eee;
+    --accent: #6cf;
+    --page-bg: #f0f0f0;
+    --font-mono: 'Courier New', monospace;
+    --tooltip-bg: #444;
+    --tooltip-text: #fff;
+  }
+  body.light {
+    --console-bg: #eee;
+    --console-text: #333;
+    --accent: #007acc;
+    --page-bg: #fff;
+    --tooltip-bg: #ddd;
+    --tooltip-text: #111;
+  }
+  body {
+    background: var(--page-bg);
+    margin: 0;
+    padding: 20px;
+    font-family: var(--font-mono);
+    color: #333;
+    transition: background 0.3s;
+  }
+  .wrapper {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "contact tools"
+      "extras tools"
+      "idiomas perfil"
+      "experiencia formacion"
+      "consola consola";
+    gap: 20px;
+  }
+  .header-grid {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  .header-text {
+    margin-left: 20px;
+  }
+  .avatar.tall {
+    width: 80px;
+    height: 160px;
+    background: url('avatar-pixel.png') center/contain no-repeat;
+    border: 2px dashed var(--accent);
+    border-radius: 8px;
+  }
+  .title {
+    font-family: 'Press Start 2P', monospace;
+    color: var(--accent);
+    margin: 0;
+    font-size: 1.8em;
+  }
+  .subtitle {
+    color: var(--accent);
+    font-size: 0.9em;
+  }
+  .console {
+    background: var(--console-bg);
+    color: var(--console-text);
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    font-size: 0.9em;
+    animation: fadeInUp 0.6s ease both;
+    margin-top: 6px;
+  }
+  .console h2 {
+    margin: 0 0 8px;
+    font-family: 'Press Start 2P', monospace;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+  .console code {
+    display: flex;
+    align-items: center;
+    gap: 10px;         /* Añade espacio entre el texto y el porcentaje */
+    margin: 4px 0;
+    color: var(--accent);
+  }
+  .console code button {
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+  .console ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .console li:before {
+    content: '»';
+    margin-right: 6px;
+    color: var(--accent);
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .lang {
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+  }
+  .bar-label {
+    width: 90px;
+    flex-shrink: 0;
+  }
+  .bar-bg {
+    flex: 1;
+    height: 10px;
+    background: #333;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 10px;
+    background: var(--accent);
+    width: var(--target-width);
+  }
+  [data-tooltip] {
+    position: relative;
+    cursor: help;
+  }
+  [data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--tooltip-bg);
+    color: var(--tooltip-text);
+    padding: 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 10;
+  }
+  [data-tooltip]:hover::after {
+    opacity: 1;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 768px) {
+    .wrapper {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "contact"
+        "tools"
+        "extras"
+        "idiomas"
+        "perfil"
+        "experiencia"
+        "formacion"
+        "consola";
+    }
+    .avatar.tall {
+      height: 120px;
+      margin-bottom: 10px;
+    }
+  }
