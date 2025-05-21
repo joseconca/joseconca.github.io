@@ -1,20 +1,35 @@
-:root {
+/* ==========================================================================
+   Variables de tema
+   ========================================================================== */
+   :root {
     --console-bg: #222;
     --console-text: #eee;
     --accent: #6cf;
-    --page-bg: #f0f0f0;
+    --page-bg: #111;
     --font-mono: 'Courier New', monospace;
     --tooltip-bg: #444;
     --tooltip-text: #fff;
   }
+  
   body.light {
     --console-bg: #eee;
     --console-text: #333;
     --accent: #007acc;
-    --page-bg: #fff;
+    --page-bg: #aaa;
     --tooltip-bg: #ddd;
     --tooltip-text: #111;
   }
+  
+  
+  /* ==========================================================================
+     Reset y globales
+     ========================================================================== */
+
+     html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      min-width: 100%;
+    }
   body {
     background: var(--page-bg);
     margin: 0;
@@ -23,9 +38,37 @@
     color: #333;
     transition: background 0.3s;
   }
-  .console, .bar-fill, .title, .subtitle, .console code, .console h2, .lang {
-    transition: background 1s, color 1s, border-color 1s;
+  
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.3s;
   }
+  a:hover {
+    color: #00d5ff;
+    text-decoration: underline;
+  }
+  
+  
+  /* ==========================================================================
+     Transiciones comunes
+     ========================================================================== */
+  .console,
+  .bar-fill,
+  .title,
+  .subtitle,
+  .console code,
+  .console h2,
+  .lang {
+    transition: background 1s,
+                color 1s,
+                border-color 1s;
+  }
+  
+  
+  /* ==========================================================================
+     Layout principal (grid)
+     ========================================================================== */
   .wrapper {
     max-width: 1000px;
     margin: auto;
@@ -39,6 +82,7 @@
       "consola consola";
     gap: 20px;
   }
+  
   .header-grid {
     grid-area: header;
     display: grid;
@@ -46,32 +90,50 @@
     align-items: center;
     justify-content: space-between;
   }
+  
   .header-left {
     display: flex;
     align-items: center;
   }
+  
   .header-text {
     margin-left: 20px;
   }
+  
+  
+  /* ==========================================================================
+     Tipografía (título, subtítulo, avatar)
+     ========================================================================== */
   .avatar.tall {
     width: 100px;
     height: 100px;
-    background: url('avatar-pixel.png') center center/cover no-repeat;
+    background: url('avatar-pixel.png') center top / cover no-repeat;
     border: 2px dashed var(--accent);
     border-radius: 8px;
-    background-position: center top;
   }
+  
   .title {
     font-family: 'Press Start 2P', monospace;
     color: var(--accent);
     margin: 0;
     font-size: 1.8em;
+    /* Máquina de escribir */
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 2s steps(10) forwards;
   }
+  
   .subtitle {
     color: var(--accent);
     font-size: 0.9em;
   }
-  button#theme-toggle{
+  
+  
+  /* ==========================================================================
+     Botón de cambio de tema
+     ========================================================================== */
+  button#theme-toggle {
     background: none;
     border: none;
     color: var(--accent);
@@ -81,8 +143,12 @@
     padding: 10px;
     border-radius: 4px;
     transition: background 0.3s;
-
   }
+  
+  
+  /* ==========================================================================
+     Componente “consola”
+     ========================================================================== */
   .console {
     background: var(--console-bg);
     color: var(--console-text);
@@ -93,19 +159,22 @@
     animation: fadeInUp 0.6s ease both;
     margin-top: 6px;
   }
+  
   .console h2 {
     margin: 0 0 8px;
     font-family: 'Press Start 2P', monospace;
     color: var(--accent);
     font-size: 1.1em;
   }
+  
   .console code {
     display: flex;
     align-items: center;
-    gap: 10px;         /* Añade espacio entre el texto y el porcentaje */
+    gap: 10px;      /* Espacio entre elementos */
     margin: 4px 0;
     color: var(--accent);
   }
+  
   .console code button {
     background: none;
     border: none;
@@ -114,30 +183,44 @@
     font-size: 0.9em;
     font-family: auto;
   }
+  
   .console ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
+  
   .console li:before {
     content: '»';
     margin-right: 6px;
     color: var(--accent);
   }
+  
+  
+  /* ==========================================================================
+     Sección tecnologías (grid 2 columnas)
+     ========================================================================== */
   .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
+  
+  
+  /* ==========================================================================
+     Barras de idioma
+     ========================================================================== */
   .lang {
     display: flex;
     align-items: center;
     margin: 6px 0;
   }
+  
   .bar-label {
     width: 90px;
     flex-shrink: 0;
   }
+  
   .bar-bg {
     flex: 1;
     height: 10px;
@@ -145,15 +228,22 @@
     border-radius: 4px;
     overflow: hidden;
   }
+  
   .bar-fill {
     height: 10px;
     background: var(--accent);
     width: var(--target-width);
   }
+  
+  
+  /* ==========================================================================
+     Tooltips
+     ========================================================================== */
   [data-tooltip] {
     position: relative;
     cursor: help;
   }
+  
   [data-tooltip]::after {
     content: attr(data-tooltip);
     position: absolute;
@@ -170,15 +260,109 @@
     transition: opacity 0.2s;
     z-index: 10;
   }
+  
   [data-tooltip]:hover::after {
     opacity: 1;
   }
-
+  
+  
+  /* ==========================================================================
+     Detalles expandibles
+     ========================================================================== */
+  .expandable .details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease,
+                opacity 0.4s ease;
+    opacity: 0;
+    color: var(--accent);
+    font-size: 0.85em;
+    padding: 0 20px;
+  }
+  
+  .expandable.open .details {
+    max-height: 200px;
+    opacity: 1;
+    padding: 0 20px;
+  }
+  
+  .expandable .summary {
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  
+  /* ==========================================================================
+     Animaciones clave
+     ========================================================================== */
+  /* Fade-in up para contenedores */
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
   }
+  
+  /* Máquina de escribir título */
+  @keyframes typing {
+    from { width: 8%; }
+    to   { width: 100%; }
+  }
+  
+  /* Parpadeo cursor tipo consola */
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  
+  /* Máquina de escribir consola */
+  .typing-line {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    display: inline-block;
+    animation: typing-console 2s steps(22) forwards;
+  }
+  
+  @keyframes typing-console {
+    from { width: 0; }
+    to   { width: 22ch; }
+  }
+  
+  /* Fade-in secuencial */
+  .fade-line { opacity: 0; }
+  .delay-1  { animation: fadeIn 0s ease forwards; animation-delay: 6s; }
+  .delay-2  { animation: fadeIn 0s ease forwards; animation-delay: 6.5s; }
+  .delay-3  { animation: fadeIn 0s ease forwards; animation-delay: 12s; }
+  
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  
+  
+  /* ==========================================================================
+     Helpers (visibilidad)
+     ========================================================================== */
+  .hidden  { visibility: hidden; }
+  .visible { visibility: visible; transition: opacity 0.3s ease; }
+  
+  
+  
+  /* ==========================================================================
+     Responsive
+     ========================================================================== */
   @media (max-width: 768px) {
+
+    body {
+      padding: 10px;
+    }
+
+    .wrapper,
+    .console,
+    .header-grid,
+    .grid-2,
+    .lang,
+    .expandable .details {
+      max-width: 100%;
+    } 
+    
     .wrapper {
       grid-template-columns: 1fr;
       grid-template-areas:
@@ -191,100 +375,11 @@
         "experiencia"
         "formacion"
         "consola";
+      
     }
-  
-  }
-
-  .expandable .details {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.4s ease;
-    opacity: 0;
-    color: var(--accent);
-    font-size: 0.85em;
-    padding: 0px 20px;
+    .avatar.tall {
+      height: 120px;
+      margin-bottom: 10px;
+    }
   }
   
-  .expandable.open .details {
-    max-height: 200px; 
-    opacity: 1;
-    padding: 0px 20px;
-  }
-  .expandable .summary {
-    cursor: pointer;
-    
-  display: inline-block;
-  }
-
-  a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  a:hover {
-    color: #00d5ff;
-    text-decoration: underline;
-  }
-
-  @keyframes typing {
-    from { width: 8% }
-    to { width: 100% }
-  }
-  .title {
-    overflow: hidden;
-    white-space: nowrap;
-    width: 0;
-    animation: typing 2s steps(10) forwards;
-  }
-  .cursor-type {
-    animation: blink 0.7s steps(1) infinite;
-  }
-  @keyframes blink {
-    50% { opacity: 0 }
-  }
-
-  .typing-line {
-    overflow: hidden;
-    white-space: nowrap;
-    width: 0;
-    display: inline-block;
-    animation: typing-console 2s steps(22) forwards;
-  }
-
-  @keyframes typing-console {
-    from { width: 0 }
-    to { width: 22ch } /* Longitud del texto './start-career.sh' */
-  }
-
-  /* Aparición gradual de las siguientes líneas */
-.fade-line {
-  opacity: 0;
-}
-
-.delay-1 {
-  animation: fadeIn 0s ease forwards;
-  animation-delay: 6s;
-}
-
-.delay-2 {
-  animation: fadeIn 0s ease forwards;
-  animation-delay: 6.5s;
-}
-
-.delay-3 {
-  animation: fadeIn 0s ease forwards;
-  animation-delay: 12s;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1 }
-}
-
-
-.hidden {
-  visibility: hidden;
-}
-.visible {
-  visibility: visible;
-  transition: opacity 0.3s ease;
-}
