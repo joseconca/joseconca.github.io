@@ -17,19 +17,19 @@
       <div class="header-left">
         <div class="avatar tall"></div>
         <div class="header-text">
-          <h1 class="title">José Conca<span class="cursor-blink"></span></h1>
-          <div class="subtitle">Desarrollador Web Junior</div>
+          <h1 class="title">Jose Conca<span class="cursor-blink"></span></h1>
+          <div class="subtitle">Desarrollador</div>
         </div>
       </div>
       <div class="header-right">
-        <button id="theme-toggle">Modo Claro</button>
+        <button id="theme-toggle">🌓</button>
       </div>
     </header>
           <div class="column">
             <div class="console" id="contact">
               <h2>Contacto</h2>
-              <code>email: <span id="email-text">vl.conca@gmail.com</span> <button onclick="copyEmail()">Copiar</button></code>
-              <code>phone: +34 680 398 509</code>
+              <code>email:  <button onclick="copyEmail()"><span id="email-text">vl.conca@gmail.com</span></button></code>
+              <code>phone: +34 <button onclick="copyTelf()"><span id="telf-text">680 398 509</span></button></code>
               <code>location: Telde, Las Palmas</code>
               <code>github: <a href="https://github.com/joseconca" target="_blank">github.com/joseconca</a></code>
             </div>
@@ -39,14 +39,12 @@
               <code>carné: B</code>
             </div>
             <div class="console" id="tools">
-              <h2>Herramientas</h2>
+              <h2>Tecnologías</h2>
               <div class="grid-2">
-                <div>Python</div><div>JavaScript</div>
-                <div>Java</div><div>Docker</div>
-                <div>Azure</div><div>SQL</div>
-                <div>Git</div><div>HTML/CSS</div>
-                <div>Figma</div><div>Firebase</div>
-                <div>MySQL</div><div>Node.js</div>
+                <div>Java</div> <div>Spring Boot</div>
+                <div>Python</div> <div>Git</div>
+                <div>HTML/CSS</div> <div>Docker</div>
+                <div>JavaScript</div> <div>MySQL</div>
               </div>
             </div>
             <div class="console" id="idiomas">
@@ -59,28 +57,29 @@
                 <span class="bar-label">Valenciano</span>
                 <div class="bar-bg"><div class="bar-fill" style="--target-width:100%;"></div></div>
               </div>
-              <div class="lang" data-tooltip="80% Avanzado">
+              <div class="lang" data-tooltip="Avanzado">
                 <span class="bar-label">Inglés</span>
                 <div class="bar-bg"><div class="bar-fill" style="--target-width:80%;"></div></div>
               </div>
             </div>
           </div>
           <div class="column">
-            <div class="console">
-              <h2>Perfil Profesional</h2>
+            <div class="console" id="aboutme">
+              <h2>Sobre mi</h2>
               <ul>
-                <li>Especialista Web (2022–2025) con fundamentos en Ingeniería Informática (incompleto).</li>
-                <li>Experiencia en frontend, backend, Azure y entrenamiento de IA.</li>
-                <li>Metodología ágil con <span data-tooltip="Reuniones diarias de sincronización">Daily Scrum</span>.</li>
+                <li>Desarrollo de aplicaciones web</li>
+                <li>Programación frontend, backend, fullstack</li>
+                <li>Experiencia con metodología ágil con <span data-tooltip="Reuniones diarias de sincronización">Daily Scrum</span></li>
               </ul>
             </div>
             <div class="console" id="experiencia">
               <h2>Experiencia Profesional</h2>
               <code>role --company Inerza --period <span data-tooltip="Marzo 2025 a Junio 2025">"Mar 2025 – Jun 2025"</span></code>
               <ul>
-                <li>Fine-tuning de modelos de IA y pipelines de datos.</li>
-                <li>Integración de librerías AI en proyectos Web.</li>
+                <li>Fine-tuning de modelos de IA</li>
+                <li>Programación servicio web local con IA integrada.</li>
                 <li>Despliegue de contenedores Docker en Azure.</li>
+                <li>Metodología ágil con Daily Scrum</li>
               </ul>
             </div>
             <div class="console" id="formacion">
@@ -90,7 +89,7 @@
                 <li>Grado en Ingeniería Informática – UPV (<span data-tooltip="Pendiente de realizar el trabajo de fin de grado. Resto de créditos superados.">2010–pendiente</span>)</li>
               </ul>
             </div>
-            <div class="console">
+            <div class="console" id="sim-script">
               <h2>Consola</h2>
               <code>&gt; ./start-career.sh</code>
               <code>Loading skills...</code>

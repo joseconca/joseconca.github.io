@@ -3,15 +3,22 @@ function copyEmail() {
     if (!emailElement) return;
     const email = emailElement.textContent;
     navigator.clipboard.writeText(email)
-      .then(() => alert('Email copiado al portapapeles'))
-      .catch(err => console.error('Error al copiar email:', err));
+      .then(() => alert('Email copiado al portapapeles'));
+  }
+
+  function copyTelf() {
+    const telfElement = document.getElementById('telf-text');
+    if (!telfElement) return;
+    const telf = telfElement.textContent;
+    navigator.clipboard.writeText(telf)
+      .then(() => alert('Teléfono copiado al portapapeles'));
   }
   
   // Theme toggle
   const toggle = document.getElementById('theme-toggle');
   toggle.addEventListener('click', () => {
     document.body.classList.toggle('light');
-    toggle.textContent = document.body.classList.contains('light') ? 'Modo Oscuro' : 'Modo Claro';
+    toggle.textContent = document.body.classList.contains('light') ? '🌘' : '🌖';
   });
   
   // Loading console animation

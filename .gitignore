@@ -1,0 +1,9 @@
+# Ignora el script de actualización
+actualizar.bat
+
+# Archivos y carpetas comunes a ignorar
+.DS_Store
+*.log
+node_modules/
+dist/
+.env
