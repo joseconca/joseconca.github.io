@@ -51,11 +51,12 @@
     margin-left: 20px;
   }
   .avatar.tall {
-    width: 80px;
-    height: 160px;
-    background: url('avatar-pixel.png') center/contain no-repeat;
+    width: 100px;
+    height: 100px;
+    background: url('avatar-pixel.png') center center/cover no-repeat;
     border: 2px dashed var(--accent);
     border-radius: 8px;
+    background-position: center top;
   }
   .title {
     font-family: 'Press Start 2P', monospace;
@@ -187,8 +188,5 @@
         "formacion"
         "consola";
     }
-    .avatar.tall {
-      height: 120px;
-      margin-bottom: 10px;
-    }
+  
   }
