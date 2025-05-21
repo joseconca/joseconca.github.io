@@ -23,6 +23,9 @@
     color: #333;
     transition: background 0.3s;
   }
+  .console, .bar-fill, .title, .subtitle, .console code, .console h2, .lang {
+    transition: background 1s, color 1s, border-color 1s;
+  }
   .wrapper {
     max-width: 1000px;
     margin: auto;
@@ -170,6 +173,7 @@
   [data-tooltip]:hover::after {
     opacity: 1;
   }
+
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -190,3 +194,96 @@
     }
   
   }
+
+  .expandable .details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    color: var(--accent);
+    font-size: 0.85em;
+    padding: 0px 20px;
+  }
+  
+  .expandable.open .details {
+    max-height: 200px; 
+    opacity: 1;
+    padding: 0px 20px;
+  }
+  .expandable .summary {
+    cursor: pointer;
+    
+  display: inline-block;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  a:hover {
+    color: #00d5ff;
+    text-decoration: underline;
+  }
+
+  @keyframes typing {
+    from { width: 8% }
+    to { width: 100% }
+  }
+  .title {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 2s steps(10) forwards;
+  }
+  .cursor-type {
+    animation: blink 0.7s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0 }
+  }
+
+  .typing-line {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    display: inline-block;
+    animation: typing-console 2s steps(22) forwards;
+  }
+
+  @keyframes typing-console {
+    from { width: 0 }
+    to { width: 22ch } /* Longitud del texto './start-career.sh' */
+  }
+  /* Aparición gradual de las siguientes líneas */
+.fade-line {
+  opacity: 0;
+}
+
+.delay-1 {
+  animation: fadeIn 0s ease forwards;
+  animation-delay: 3s;
+}
+
+.delay-2 {
+  animation: fadeIn 0s ease forwards;
+  animation-delay: 3.5s;
+}
+
+.delay-3 {
+  animation: fadeIn 0s ease forwards;
+  animation-delay: 9s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1 }
+}
+
+
+.hidden {
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
