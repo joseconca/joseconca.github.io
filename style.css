@@ -5,7 +5,7 @@
     --console-bg: #222;
     --console-text: #eee;
     --accent: #6cf;
-    --page-bg: #111;
+    --page-bg: #111;        /* OJO: fondo más oscuro en modo dark */
     --font-mono: 'Courier New', monospace;
     --tooltip-bg: #444;
     --tooltip-text: #fff;
@@ -15,23 +15,26 @@
     --console-bg: #eee;
     --console-text: #333;
     --accent: #007acc;
-    --page-bg: #aaa;
+    --page-bg: #fff;
     --tooltip-bg: #ddd;
     --tooltip-text: #111;
   }
   
-  
   /* ==========================================================================
      Reset y globales
      ========================================================================== */
-
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
+    width: -webkit-fill-available;
     background: var(--page-bg);
     margin: 0;
     padding: 20px;
     font-family: var(--font-mono);
     color: #333;
-    transition: background 0.3s;
+    transition: background 0.3s, color 0.3s;
   }
   
   a {
@@ -44,7 +47,6 @@
     text-decoration: underline;
   }
   
-  
   /* ==========================================================================
      Transiciones comunes
      ========================================================================== */
@@ -55,11 +57,10 @@
   .console code,
   .console h2,
   .lang {
-    transition: background 1s,
-                color 1s,
-                border-color 1s;
+    transition: background 0.3s,
+                color 0.3s,
+                border-color 0.3s;
   }
-  
   
   /* ==========================================================================
      Layout principal (grid)
@@ -68,6 +69,7 @@
     max-width: 1000px;
     margin: auto;
     display: grid;
+    grid-template-columns: 1fr 2fr;
     grid-template-areas:
       "header header"
       "contact tools"
@@ -95,7 +97,6 @@
     margin-left: 20px;
   }
   
-  
   /* ==========================================================================
      Tipografía (título, subtítulo, avatar)
      ========================================================================== */
@@ -112,7 +113,6 @@
     color: var(--accent);
     margin: 0;
     font-size: 1.8em;
-    /* Máquina de escribir */
     overflow: hidden;
     white-space: nowrap;
     width: 0;
@@ -123,7 +123,6 @@
     color: var(--accent);
     font-size: 0.9em;
   }
-  
   
   /* ==========================================================================
      Botón de cambio de tema
@@ -137,9 +136,11 @@
     margin-left: 20px;
     padding: 10px;
     border-radius: 4px;
-    transition: background 0.3s;
+    transition: transform 0.3s;
   }
-  
+  button#theme-toggle.rotate {
+    transform: rotate(360deg);
+  }
   
   /* ==========================================================================
      Componente “consola”
@@ -165,7 +166,7 @@
   .console code {
     display: flex;
     align-items: center;
-    gap: 10px;      /* Espacio entre elementos */
+    gap: 10px;
     margin: 4px 0;
     color: var(--accent);
   }
@@ -176,7 +177,7 @@
     color: var(--accent);
     cursor: pointer;
     font-size: 0.9em;
-    font-family: auto;
+    font-family: var(--font-mono);
   }
   
   .console ul {
@@ -191,7 +192,6 @@
     color: var(--accent);
   }
   
-  
   /* ==========================================================================
      Sección tecnologías (grid 2 columnas)
      ========================================================================== */
@@ -200,7 +200,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
-  
   
   /* ==========================================================================
      Barras de idioma
@@ -229,7 +228,6 @@
     background: var(--accent);
     width: var(--target-width);
   }
-  
   
   /* ==========================================================================
      Tooltips
@@ -260,7 +258,6 @@
     opacity: 1;
   }
   
-  
   /* ==========================================================================
      Detalles expandibles
      ========================================================================== */
@@ -286,7 +283,6 @@
     display: inline-block;
   }
   
-  
   /* ==========================================================================
      Animaciones clave
      ========================================================================== */
@@ -302,7 +298,7 @@
     to   { width: 100%; }
   }
   
-  /* Parpadeo cursor tipo consola */
+  /* Parpadeo cursor placeholder (si lo necesitas) */
   @keyframes blink {
     50% { opacity: 0; }
   }
@@ -322,42 +318,36 @@
   }
   
   /* Fade-in secuencial */
-  .fade-line { opacity: 0; }
-  .delay-1  { animation: fadeIn 0s ease forwards; animation-delay: 6s; }
-  .delay-2  { animation: fadeIn 0s ease forwards; animation-delay: 6.5s; }
-  .delay-3  { animation: fadeIn 0s ease forwards; animation-delay: 12s; }
+  .fade-line {
+    opacity: 0;
+  }
+  .delay-1 {
+    animation: fadeIn 0s ease forwards;
+    animation-delay: 6s;
+  }
+  .delay-2 {
+    animation: fadeIn 0s ease forwards;
+    animation-delay: 6.5s;
+  }
+  .delay-3 {
+    animation: fadeIn 0s ease forwards;
+    animation-delay: 12s;
+  }
   
   @keyframes fadeIn {
     to { opacity: 1; }
   }
   
-  
   /* ==========================================================================
-     Helpers (visibilidad)
+     Helpers de visibilidad
      ========================================================================== */
   .hidden  { visibility: hidden; }
   .visible { visibility: visible; transition: opacity 0.3s ease; }
   
-  
-  
   /* ==========================================================================
-     Responsive
+     Responsive (móvil)
      ========================================================================== */
   @media (max-width: 768px) {
-
-    body {
-      padding: 10px;
-    }
-
-    .wrapper,
-    .console,
-    .header-grid,
-    .grid-2,
-    .lang,
-    .expandable .details {
-      max-width: 100%;
-    } 
-    
     .wrapper {
       grid-template-columns: 1fr;
       grid-template-areas:
@@ -366,12 +356,17 @@
         "tools"
         "extras"
         "idiomas"
-        "perfil"
+        "aboutme"
         "experiencia"
         "formacion"
+        "proyectos"
         "consola";
-      
     }
+  
+    .grid-2 {
+      grid-template-columns: 1fr;
+    }
+  
     .avatar.tall {
       height: 120px;
       margin-bottom: 10px;
