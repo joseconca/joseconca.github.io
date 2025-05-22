@@ -1,11 +1,20 @@
 /* ==========================================================================
-   Variables de tema
+   Evitar desbordamiento horizontal globalmente
    ========================================================================== */
-   :root {
+   html, body {
+    max-width: 100%;
+    min-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* ==========================================================================
+     Variables de tema
+     ========================================================================== */
+  :root {
     --console-bg: #222;
     --console-text: #eee;
     --accent: #6cf;
-    --page-bg: #111;        /* OJO: fondo más oscuro en modo dark */
+    --page-bg: #f0f0f0;
     --font-mono: 'Courier New', monospace;
     --tooltip-bg: #444;
     --tooltip-text: #fff;
@@ -23,12 +32,7 @@
   /* ==========================================================================
      Reset y globales
      ========================================================================== */
-  html {
-    scroll-behavior: smooth;
-  }
-  
   body {
-    width: -webkit-fill-available;
     background: var(--page-bg);
     margin: 0;
     padding: 20px;
@@ -57,9 +61,9 @@
   .console code,
   .console h2,
   .lang {
-    transition: background 0.3s,
-                color 0.3s,
-                border-color 0.3s;
+    transition: background 1s,
+                color 1s,
+                border-color 1s;
   }
   
   /* ==========================================================================
@@ -76,6 +80,7 @@
       "extras tools"
       "idiomas perfil"
       "experiencia formacion"
+      "proyectos proyectos"
       "consola consola";
     gap: 20px;
   }
@@ -136,10 +141,7 @@
     margin-left: 20px;
     padding: 10px;
     border-radius: 4px;
-    transition: transform 0.3s;
-  }
-  button#theme-toggle.rotate {
-    transform: rotate(360deg);
+    transition: background 0.3s;
   }
   
   /* ==========================================================================
@@ -166,7 +168,7 @@
   .console code {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 10px;      
     margin: 4px 0;
     color: var(--accent);
   }
@@ -177,7 +179,7 @@
     color: var(--accent);
     cursor: pointer;
     font-size: 0.9em;
-    font-family: var(--font-mono);
+    font-family: auto;
   }
   
   .console ul {
@@ -298,10 +300,17 @@
     to   { width: 100%; }
   }
   
-  /* Parpadeo cursor placeholder (si lo necesitas) */
+  /* Parpadeo cursor tipo consola */
   @keyframes blink {
     50% { opacity: 0; }
   }
+  /* Cursor parpadeante tras el título */
+.cursor-type {
+    display: inline-block;
+    margin-left: 4px;           /* separa un poco la barra del texto */
+    animation: blink 0.7s steps(1) infinite;
+  }
+  
   
   /* Máquina de escribir consola */
   .typing-line {
@@ -318,37 +327,33 @@
   }
   
   /* Fade-in secuencial */
-  .fade-line {
-    opacity: 0;
-  }
-  .delay-1 {
-    animation: fadeIn 0s ease forwards;
-    animation-delay: 6s;
-  }
-  .delay-2 {
-    animation: fadeIn 0s ease forwards;
-    animation-delay: 6.5s;
-  }
-  .delay-3 {
-    animation: fadeIn 0s ease forwards;
-    animation-delay: 12s;
-  }
+  .fade-line { opacity: 0; }
+  .delay-1  { animation: fadeIn 0s ease forwards; animation-delay: 6s; }
+  .delay-2  { animation: fadeIn 0s ease forwards; animation-delay: 6.5s; }
+  .delay-3  { animation: fadeIn 0s ease forwards; animation-delay: 12s; }
   
   @keyframes fadeIn {
     to { opacity: 1; }
   }
   
   /* ==========================================================================
-     Helpers de visibilidad
+     Helpers (visibilidad)
      ========================================================================== */
   .hidden  { visibility: hidden; }
   .visible { visibility: visible; transition: opacity 0.3s ease; }
   
   /* ==========================================================================
-     Responsive (móvil)
+     Responsive móvil (pantallas ≤ 768px)
      ========================================================================== */
   @media (max-width: 768px) {
+    /* Reduce padding del body para ocupar todo el ancho */
+    body {
+      padding: 10px;
+    }
+  
+    /* Grid a columna única y ancho completo */
     .wrapper {
+      display: grid;
       grid-template-columns: 1fr;
       grid-template-areas:
         "header"
@@ -356,18 +361,30 @@
         "tools"
         "extras"
         "idiomas"
-        "aboutme"
+        "perfil"
         "experiencia"
         "formacion"
         "proyectos"
         "consola";
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
     }
   
-    .grid-2 {
-      grid-template-columns: 1fr;
+    /* Fuerza ancho completo en componentes clave */
+    .console,
+    .header-grid,
+    .grid-2,
+    .lang,
+    .expandable .details {
+      width: 100%;
+      box-sizing: border-box;
     }
   
+    /* Ajuste de avatar en móvil */
     .avatar.tall {
+      width: 80px;
       height: 120px;
       margin-bottom: 10px;
     }
