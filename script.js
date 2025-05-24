@@ -35,7 +35,7 @@ function copyEmail() {
       percent1 = Math.min(percent1 + 1, 100);
       percentSpan1.textContent = percent1 + '%';
       if (percent1 === 100) clearInterval(interval);
-    }, 25); // Ajusta velocidad
+    }, 20); // Ajusta velocidad
   }, 7500); // Espera
 
   let percent = 0;
