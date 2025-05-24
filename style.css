@@ -1,3 +1,7 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* ==========================================================================
    Evitar desbordamiento horizontal globalmente
    ========================================================================== */
@@ -381,12 +385,61 @@
       width: 100%;
       box-sizing: border-box;
     }
+
+    .console code {
+      word-break: break-all;
+    }
+
+    .bar-label {
+      width: 80px;
+      /* Consider adjusting font-size if text still wraps or is too close to edges */
+      /* font-size: 0.85em; */
+    }
   
     /* Ajuste de avatar en móvil */
     .avatar.tall {
-      width: 80px;
-      height: 120px;
+      width: 70px;
+      height: 70px;
       margin-bottom: 10px;
     }
   }
-  
+
+/* ==========================================================================
+   Responsive móvil (pantallas ≤ 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+  }
+
+  .console {
+    padding: 10px;
+    font-size: 0.85em;
+  }
+
+  .header-text .title {
+    font-size: 1.5em;
+  }
+
+  .header-text .subtitle {
+    font-size: 0.8em;
+  }
+
+  .console h2 {
+    font-size: 1em;
+  }
+
+  .avatar.tall {
+    width: 50px;
+    height: 50px;
+  }
+
+  .lang .bar-label {
+    width: 70px;
+    font-size: 0.9em;
+  }
+
+  .header-left .header-text {
+    margin-left: 10px;
+  }
+}
