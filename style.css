@@ -194,7 +194,6 @@
   
   .console li:before {
     content: '»';
-    margin-right: 6px;
     color: var(--accent);
   }
   
