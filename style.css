@@ -18,6 +18,7 @@
     --console-bg: #222;
     --console-text: #eee;
     --accent: #6cf;
+    --accent-details: #ffae66;
     --page-bg: #333;
     --font-mono: 'Courier New', monospace;
     --tooltip-bg: #444;
@@ -28,6 +29,7 @@
     --console-bg: #eee;
     --console-text: #333;
     --accent: #007acc;
+    --accent-details: #660066;
     --page-bg: #fff;
     --tooltip-bg: #ddd;
     --tooltip-text: #111;
@@ -272,7 +274,7 @@
     transition: max-height 0.4s ease,
                 opacity 0.4s ease;
     opacity: 0;
-    color: var(--accent);
+    color: var(--accent-details);
     font-size: 0.85em;
     padding: 0 20px;
   }
@@ -399,11 +401,10 @@
       word-break: break-all;
     }
 
-    .bar-label {
+    /*.bar-label {
       width: 80px;
-      /* Consider adjusting font-size if text still wraps or is too close to edges */
-      /* font-size: 0.85em; */
-    }
+      font-size: 0.85em; 
+    }*/
   
     /* Ajuste de avatar en móvil */
     .avatar.tall {
@@ -444,7 +445,7 @@
   }
 
   .lang .bar-label {
-    width: 70px;
+    /*width: 70px;*/
     font-size: 0.9em;
   }
 
