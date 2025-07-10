@@ -1,55 +1,59 @@
-function copyEmail() {
-    const emailElement = document.getElementById('email-text');
-    if (!emailElement) return;
-    const email = emailElement.textContent;
-    navigator.clipboard.writeText(email)
-      .then(() => alert('Email copiado al portapapeles'));
-  }
+fetch('proyectos.json')
+  .then(response => {
+    if(!response.ok) throw new Error('HTTP error ' + response.status);
+    return response.json();
+  })
+  .then(projects => {
+    const tabsContainer = document.getElementById('tabs');
+    const projectContainer = document.getElementById('project-container');
 
-  // Expandir items 
-  document.querySelectorAll('.expandable .summary').forEach(el => {
-    el.addEventListener('click', () => {
-      el.parentElement.classList.toggle('open');
+    projects.forEach((proj, index) => {
+      const btn = document.createElement('button');
+      btn.className = 'tab-button';
+      if(index === 0) btn.classList.add('active');
+      btn.textContent = proj.title;
+      btn.dataset.tab = proj.id;
+      tabsContainer.appendChild(btn);
+
+      const div = document.createElement('div');
+      div.id = proj.id;
+      div.className = 'project-content';
+      if(index !== 0) div.classList.add('hidden');
+
+      let mediaHtml = '';
+      if (proj.image) {
+        const ext = proj.image.split('.').pop().toLowerCase();
+        if (ext === 'mp4') {
+          mediaHtml = `<video controls src="${proj.image}" style="max-width:100%;display:block;margin:10px 0;"></video>`;
+        } else {
+          mediaHtml = `<img src="${proj.image}" alt="Captura ${proj.title}" style="max-width:100%;display:block;margin:10px 0;">`;
+        }
+      }
+
+      div.innerHTML = `
+        <h3>${proj.title}</h3>
+        <p>${proj.description}</p>
+        <p><strong>Tecnologías:</strong> ${proj.technologies.join(', ')}</p>
+        <p><a class="ver-btn" href="${proj.repo}" target="_blank">Ver en GitHub</a></p>
+        ${mediaHtml}
+      `;
+      projectContainer.appendChild(div);
     });
+
+    tabsContainer.addEventListener('click', e => {
+      if(e.target.classList.contains('tab-button')){
+        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const selected = e.target.dataset.tab;
+        document.querySelectorAll('.project-content').forEach(pc => {
+          pc.classList.toggle('hidden', pc.id !== selected);
+        });
+      }
+    });
+  })
+  .catch(err => {
+    console.error('Error cargando proyectos:', err);
+    const projectContainer = document.getElementById('project-container');
+    projectContainer.innerHTML = '<p>No se pudieron cargar los proyectos. Ver más información en <a href="https://github.com/joseconca" target="_blank">github.com/joseconca</a></p>';
   });
-
-
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.body.classList.add('light');
-    toggle.textContent = '🌘';
-  }
-  // Theme toggle
-  const toggle = document.getElementById('theme-toggle');
-  toggle.addEventListener('click', () => {
-    document.body.classList.toggle('light');
-    toggle.textContent = document.body.classList.contains('light') ? '🌘' : '🌖';
-  });
-  
-
-
-  // Loading console animation
-  let percent1 = 0;
-  const percentSpan1 = document.getElementById('percent1');
-  setTimeout(() => {
-    const interval = setInterval(() => {
-      percent1 = Math.min(percent1 + 1, 100);
-      percentSpan1.textContent = percent1 + '%';
-      if (percent1 === 100) clearInterval(interval);
-    }, 20); // Ajusta velocidad
-  }, 7500); // Espera
-
-  let percent = 0;
-  const percentSpan = document.getElementById('percent2');
-  setTimeout(() => {
-    const interval = setInterval(() => {
-      percent = Math.min(percent + 1, 100);
-      percentSpan.textContent = percent + '%';
-      if (percent === 99) clearInterval(interval);
-    }, 100); // Ajusta velocidad
-  }, 13000); // Espera
-
-  setTimeout(() => {
-    const check = document.getElementById('ready-check');
-    check.classList.remove('hidden');
-    check.classList.add('visible');
-  }, 10100); // 2s después de "Web Dev Ready"

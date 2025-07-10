@@ -1,0 +1,27 @@
+[
+    {
+      "id": "proj1",
+      "title": "Juego infantil",
+      "description": "Aplicación de escritorio en JavaFX para enseñar a niños las letras y los números.",
+      "technologies": ["Java", "JavaFX", "Maven"],
+      "image": "./resources/proj1.png",
+      "repo": "https://github.com/joseconca/juego-infantil"
+    },
+    {
+      "id": "proj2",
+      "title": "Cartelera de Cine",
+      "description": "Aplicación web con seguridad, autenticación y persistencia en Spring Boot",
+      "technologies": ["Java", "Maven", "SpringBoot", "Thymeleaf", "HTML", "CSS", "JavaScript", "MySQL"],
+      
+      "repo": "https://github.com/joseconca/daw-dsw-cartelera"
+    },
+    {
+      "id": "proj3",
+      "title": "Búsqueda de mascotas",
+      "description": "Aplicación web interactiva para el registro y visualización de avistamientos de mascotas con geolocalización.",
+      "technologies": ["Python", "FastAPI","SQLAlchemy", "Google Maps API", "HTML", "CSS", "JavaScript"],
+      "image": "./resources/proj3.mp4",
+      "repo": "https://github.com/joseconca/proyecto-final-DAW"
+    }
+  ]
+  
