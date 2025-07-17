@@ -22,6 +22,15 @@
       "technologies": ["Python", "FastAPI","SQLAlchemy", "Google Maps API", "HTML", "CSS", "JavaScript"],
       "image": "./resources/proj3.mp4",
       "repo": "https://github.com/joseconca/proyecto-final-DAW"
+    },
+    {
+      "id": "proj4",
+      "title": "Juego pokemon",
+      "description": "Juego de navegador en javascript estilo space invaders con temática de pokemon.",
+      "technologies": ["JavaScript", "HTML", "CSS"],
+      "image": "./resources/proj4.png",
+      "repo": "https://github.com/joseconca/proyecto-final-DAW",
+      "link": "https://joseconca.github.io/juego-pokemon-javascript/"
     }
   ]
   

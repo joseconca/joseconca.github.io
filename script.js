@@ -20,6 +20,7 @@ fetch('proyectos.json')
       div.className = 'project-content';
       if(index !== 0) div.classList.add('hidden');
 
+      //si tiene imagen o video
       let mediaHtml = '';
       if (proj.image) {
         const ext = proj.image.split('.').pop().toLowerCase();
@@ -29,13 +30,19 @@ fetch('proyectos.json')
           mediaHtml = `<img src="${proj.image}" alt="Captura ${proj.title}" style="max-width:100%;display:block;margin:10px 0;">`;
         }
       }
+      //si tiene página en github pages
+      let ghpages = '';
+      if (proj.link){
+        ghpages = `<a class = "ver-btn" href="${proj.link}" target="_blank">Enlace directo</a>`;
+      }
 
       div.innerHTML = `
         <h3>${proj.title}</h3>
         <p>${proj.description}</p>
+        
         <p><strong>Tecnologías:</strong> ${proj.technologies.join(', ')}</p>
-        <p><a class="ver-btn" href="${proj.repo}" target="_blank">Ver en GitHub</a></p>
-        ${mediaHtml}
+        <p><a class="ver-btn" href="${proj.repo}" target="_blank">Ver proyecto en GitHub</a> ${ghpages}</p>
+        ${mediaHtml} 
       `;
       projectContainer.appendChild(div);
     });
