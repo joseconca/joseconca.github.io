@@ -29,7 +29,7 @@
       "description": "Juego de navegador en javascript estilo space invaders con temática de pokemon.",
       "technologies": ["JavaScript", "HTML", "CSS"],
       "image": "./resources/proj4.png",
-      "repo": "https://github.com/joseconca/proyecto-final-DAW",
+      "repo": "https://github.com/joseconca/juego-pokemon-javascript",
       "link": "https://joseconca.github.io/juego-pokemon-javascript/"
     }
   ]
