@@ -38,5 +38,6 @@ a { color: inherit; text-decoration: none; }
 .project-content img { width: 100%; max-width: 600px; display: block; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
 .ver-btn { display: inline-block; margin: 20px 0; padding: 10px 20px; background: #2c3e50; color: #ecf0f1; border-radius: 4px; transition: background 0.3s ease; }
 
-
+/* Última actualización */
+#last-update { font-weight: bold; font-size: smaller; color: #2c3e50; float: right;}
 
