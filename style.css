@@ -23,15 +23,19 @@ a { color: inherit; text-decoration: none; }
 
 /* Experiencia y Formación */
 .entry { margin-bottom: 20px; }
-.entry-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 10px; }
+.entry-header { display: flex; align-items: baseline; gap: 20px;}
 .entry-header time { font-weight: bold; }
 .entry-header h3 { font-size: 1.2rem; }
+.entry h4 { font-size: 1rem; color: #555; margin-bottom: 5px; }
 .entry-list { list-style: none; padding-left: 1em; }
-.entry-list li { margin-bottom: 10px; }
+.entry-list li { margin-bottom: 10px; width: 90%;}
+a:hover { text-decoration: underline; background-color: #bdc3c7; }
+
 
 /* Proyectos con pestañas */
 .tabs { display: flex; border-bottom: 1px solid #ccc; margin-bottom: 20px; }
 .tab-button { padding: 10px 20px; background: none; border: none; cursor: pointer; font-size: 1rem; }
+.tab-button:hover { background: #ecf0f1; }
 .tab-button.active { border-bottom: 3px solid #2c3e50; font-weight: bold; }
 .project-content { display: block; }
 .hidden { display: none; }

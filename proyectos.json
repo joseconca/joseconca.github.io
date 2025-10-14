@@ -2,7 +2,7 @@
     {
       "id": "proj1",
       "title": "Juego infantil",
-      "description": "Aplicación de escritorio en JavaFX para enseñar a niños las letras y los números.",
+      "description": "Aplicación de escritorio en JavaFX para enseñar a niños las letras y los números",
       "technologies": ["Java", "JavaFX", "Maven"],
       "image": "./resources/proj1.png",
       "repo": "https://github.com/joseconca/juego-infantil"
@@ -18,7 +18,7 @@
     {
       "id": "proj3",
       "title": "Búsqueda de mascotas",
-      "description": "Aplicación web interactiva para el registro y visualización de avistamientos de mascotas con geolocalización.",
+      "description": "Aplicación web interactiva para el registro y visualización de avistamientos de mascotas con geolocalización",
       "technologies": ["Python", "FastAPI","SQLAlchemy", "Google Maps API", "HTML", "CSS", "JavaScript"],
       "image": "./resources/proj3.mp4",
       "repo": "https://github.com/joseconca/proyecto-final-DAW"
@@ -26,7 +26,7 @@
     {
       "id": "proj4",
       "title": "Juego pokemon",
-      "description": "Juego de navegador en javascript estilo space invaders con temática de pokemon.",
+      "description": "Juego de navegador en javascript estilo space invaders con temática de pokemon",
       "technologies": ["JavaScript", "HTML", "CSS"],
       "image": "./resources/proj4.png",
       "repo": "https://github.com/joseconca/juego-pokemon-javascript",
