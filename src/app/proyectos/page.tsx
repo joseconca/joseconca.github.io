@@ -35,7 +35,7 @@ export default function ProyectosPage() {
   return (
     <div className="space-y-10">
       
-      {/* 1. CABECERA DE LA PÁGINA */}
+      {/* CABECERA */}
       <header className="border-b border-slate-800 pb-6">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
           Mis Proyectos
@@ -46,7 +46,7 @@ export default function ProyectosPage() {
         </p>
       </header>
 
-      {/* 2. BARRA DE FILTROS */}
+      {/* FILTROS */}
       <section>
         <div className="flex flex-wrap gap-2">
           {todasLasTecnologias.map((tech) => (
@@ -65,14 +65,13 @@ export default function ProyectosPage() {
         </div>
       </section>
 
-      {/* 3. REJILLA DE PROYECTOS */}
+      {/* PROYECTOS */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {proyectosFiltrados.map((proyecto) => (
           <article
             key={proyecto.id}
             className="bg-slate-800/30 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col transition-all hover:bg-slate-800/50 hover:border-slate-700 hover:shadow-xl"
           >
-            {/* Contenido principal de la tarjeta */}
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-white mb-3">
                 {proyecto.titulo}
@@ -82,10 +81,8 @@ export default function ProyectosPage() {
               </p>
             </div>
 
-            {/* Footer de la tarjeta: Tecnologías y Botones */}
             <div className="mt-4 pt-6 border-t border-slate-800/80">
               
-              {/* Etiquetas de tecnología */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {proyecto.tecnologias?.map((tech) => (
                   <span
@@ -106,7 +103,7 @@ export default function ProyectosPage() {
                     rel="noreferrer"
                     className="inline-flex items-center bg-slate-700 hover:bg-slate-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
                   >
-                    Código Fuente ↗
+                    Repositorio en Github ↗
                   </a>
                 )}
                 
@@ -117,7 +114,7 @@ export default function ProyectosPage() {
                     rel="noreferrer"
                     className="inline-flex items-center bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
                   >
-                    Ver Demo →
+                    Probar →
                   </a>
                 )}
               </div>
