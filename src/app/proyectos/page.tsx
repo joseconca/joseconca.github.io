@@ -103,7 +103,7 @@ export default function ProyectosPage() {
                     rel="noreferrer"
                     className="inline-flex items-center bg-slate-700 hover:bg-slate-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
                   >
-                    Repositorio en Github ↗
+                    Ir a Github ↗
                   </a>
                 )}
                 

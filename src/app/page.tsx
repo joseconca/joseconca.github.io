@@ -1,18 +1,17 @@
-import Link from 'next/link';
-import { datosContacto } from '@/data/datosContacto';
-import { skillStack } from '@/data/skillStack';
-import { proyectos } from '@/data/proyectos';
+import Link from "next/link";
+import { datosContacto } from "@/data/datosContacto";
+import { skillStack } from "@/data/skillStack";
+import { proyectos } from "@/data/proyectos";
 
 export default function HomePage() {
   const proyectosDestacados = proyectos.slice(0, 2);
   const formatearNombreCategoria = (categoria: string) =>
     categoria
-      .replace(/([a-z])([A-Z])/g, '$1 $2')
+      .replace(/([a-z])([A-Z])/g, "$1 $2")
       .replace(/^./, (letra) => letra.toUpperCase());
 
   return (
     <div className="space-y-16">
-      
       {/* Presentación */}
       <section className="flex flex-col md:flex-row items-center gap-8 bg-slate-800/50 p-8 sm:p-10 rounded-2xl border border-slate-700/60 shadow-xl">
         <img
@@ -29,35 +28,55 @@ export default function HomePage() {
               {datosContacto.nombre}
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 font-medium mt-1">
-              {datosContacto.rol} — {datosContacto.localizacion}
+              {datosContacto.rol}
             </p>
           </div>
 
           <p className="text-slate-400 max-w-2xl leading-relaxed text-sm sm:text-base">
-            Con experiencia en desarrollo web fullstack y aplicaciones de software. Graduado en DAW y finalizando el Grado en Ingeniería Informática.
+            Con experiencia en desarrollo web fullstack y aplicaciones de
+            software.
+          </p>
+          <p className="text-slate-400 max-w-2xl leading-relaxed text-sm sm:text-base">
+            Graduado en DAW y finalizando el Grado en Ingeniería Informática.
           </p>
 
-          {/* Botones de Acción Rápidos */}
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
-            <Link
-              href="/proyectos"
-              className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors shadow-md text-sm"
-            >
-              Ver Proyectos
-            </Link>
-            <a
-              href={datosContacto.curriculumPdf}
-              download
-              className="bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold px-5 py-2.5 rounded-lg border border-slate-600 transition-colors text-sm"
-            >
-              Descargar CV
-            </a>
-            <a
-              href={`mailto:${datosContacto.email}`}
-              className="text-slate-400 hover:text-white underline text-sm transition-colors py-2 px-1"
-            >
-              {datosContacto.email}
-            </a>
+          {/* Datos de contacto */}
+          <div className="flex flex-col items-center md:items-start gap-1.5 pt-2 text-sm">
+            <div>
+              <span className="text-slate-500">Localización: </span>
+              <span className="text-slate-300">{datosContacto.localizacion}</span>
+            </div>
+            <div>
+              <span className="text-slate-500">Email: </span>
+              <a
+                href={`mailto:${datosContacto.email}`}
+                className="text-slate-300 hover:text-blue-400 hover:underline transition-colors"
+              >
+                {datosContacto.email}
+              </a>
+            </div>
+            <div>
+              <span className="text-slate-500">Github: </span>
+              <a
+                href={datosContacto.github}
+                target="_blank"
+                rel="noreferrer"
+                className="text-slate-300 hover:text-blue-400 hover:underline transition-colors"
+              >
+                joseconca.github.io
+              </a>
+            </div>
+            <div>
+              <span className="text-slate-500">LinkedIn: </span>
+              <a
+                href={datosContacto.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="text-slate-300 hover:text-blue-400 hover:underline transition-colors"
+              >
+                /in/joseconca
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -79,9 +98,7 @@ export default function HomePage() {
               <h3 className="text-lg font-bold text-white mb-2 text-blue-400">
                 {formatearNombreCategoria(categoria)}
               </h3>
-              <p className="text-slate-400 text-sm mb-4">
-                {datos.descripcion}
-              </p>
+              <p className="text-slate-400 text-sm mb-4">{datos.descripcion}</p>
               <div className="flex flex-wrap gap-2">
                 {datos.tecnologias.map((tecnologia) => (
                   <span
@@ -133,14 +150,15 @@ export default function HomePage() {
 
               <div>
                 <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-800/80">
-                  {proyecto.tecnologias && proyecto.tecnologias.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs text-blue-400 bg-blue-950/40 px-2 py-0.5 rounded font-mono border border-blue-900/50"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                  {proyecto.tecnologias &&
+                    proyecto.tecnologias.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-xs text-blue-400 bg-blue-950/40 px-2 py-0.5 rounded font-mono border border-blue-900/50"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                 </div>
               </div>
             </div>
@@ -150,9 +168,12 @@ export default function HomePage() {
 
       {/* FOOTER CALL-TO-ACTION */}
       <section className="bg-gradient-to-r from-blue-900/30 to-slate-800/40 p-8 rounded-2xl border border-blue-900/40 text-center space-y-4">
-        <h2 className="text-2xl font-bold text-white">¿Interesado en mi perfil?</h2>
+        <h2 className="text-2xl font-bold text-white">
+          ¿Interesado en mi perfil?
+        </h2>
         <p className="text-slate-300 max-w-xl mx-auto text-sm sm:text-base">
-          Puedes conocer mis principales áreas de especialización y descargar una copia de mi CV lista para imprimir.
+          Puedes conocer mis principales áreas de especialización y descargar
+          una copia de mi CV lista para imprimir.
         </p>
         <div className="pt-2 flex flex-wrap justify-center gap-3">
           <a
@@ -164,7 +185,6 @@ export default function HomePage() {
           </a>
         </div>
       </section>
-
     </div>
   );
 }
