@@ -1,14 +1,14 @@
 export const skillStack = {
   lenguajes: {
-    descripcion: "Lenguajes de programación para construir soluciones versátiles y mantenibles.",
+    descripcion: "Lenguajes de programación",
     tecnologias: ["Java", "Python", "C#", "JavaScript", "TypeScript"],
   },
   backend: {
-    descripcion: "Desarrollo de APIs, lógica de negocio y arquitectura de datos.",
+    descripcion: "Desarrollo de APIs, lógica de negocio y arquitectura de datos",
     tecnologias: ["Spring Boot", "FastAPI", ".NET", "MySQL", "PostgreSQL"],
   },
   frontend: {
-    descripcion: "Interfaces modernas, dinámicas y pruebas end-to-end.",
+    descripcion: "Interfaces modernas, dinámicas",
     tecnologias: ["Next.js", "TailwindCSS", "HTML5", "CSS3"],
   },
   devopsCloud: {
