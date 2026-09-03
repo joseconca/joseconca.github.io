@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { datosContacto } from "@/data/datosContacto";
 
 const enlaces = [
   { href: "/", label: "Inicio" },
@@ -42,7 +43,7 @@ export default function Navbar() {
           );
         })}
         <a
-          href="/resources/CV_Jose_Conca_082026.pdf"
+          href={datosContacto.curriculumPdf}
           download
           className="bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-1.5 rounded-md font-semibold transition-colors text-xs sm:text-sm"
         >
