@@ -7,7 +7,7 @@ import { datosContacto } from "@/data/datosContacto";
 const enlaces = [
   { href: "/", label: "Inicio" },
   { href: "/proyectos", label: "Proyectos" },
-  { href: "/cv", label: "CV" },
+  { href: "/trayectoria", label: "Trayectoria" },
 ];
 
 export default function Navbar() {

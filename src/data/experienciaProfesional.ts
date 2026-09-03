@@ -1,7 +1,8 @@
 export const experienciaProfesional = [
   {
     id: "inerza-beca-fulp",
-    periodo: "Julio 2025 - Mayo 2026",
+    fechaInicio: "Julio 2025",
+    fechaFin: "Mayo 2026",
     rol: "Programador",
     empresa: "Inerza",
     urlEmpresa: "https://www.inerza.com/",
@@ -9,13 +10,19 @@ export const experienciaProfesional = [
     tareas: [
       {
         titulo: "Desarrollo y mantenimiento de aplicación .net",
-        descripcion: "Desarrollo de una aplicación web y de escritorio en C# y su integración en una API REST con actualizaciones diarias según cliente con una metodología agile scrum. Pruebas unitarias y e2e y uso del control de versiones Git."
+        detalles: [
+          "Desarrollo de una aplicación web y de escritorio en C#.",
+          "Integración con una API REST y actualizaciones diarias según cliente.",
+          "Trabajo con metodología Agile Scrum.",
+          "Creación de pruebas unitarias y end-to-end, y uso de Git."
+        ]
       }
     ]
   },
   {
     id: "inerza-practicas-ciclo",
-    periodo: "Marzo 2025 - Junio 2025",
+    fechaInicio: "Marzo 2025",
+    fechaFin: "Junio 2025",
     rol: "Analista/Desarrollador",
     empresa: "Inerza",
     urlEmpresa: "https://www.inerza.com/",
@@ -23,7 +30,12 @@ export const experienciaProfesional = [
     tareas: [
       {
         titulo: "Fine-tuning de modelos de IA y su despliegue en contenedores Docker en azure",
-        descripcion: "Ajuste de modelos preentrenados usando datos del cliente con herramientas como HuggingFace y Unsloth. Optimización del rendimiento mediante experimentación iterativa. Creación de imágenes Docker para los servicios con interfaz para inferencias a la IA. Despliegue en instancias de Azure Container Apps."
+        detalles: [
+          "Ajuste de modelos preentrenados con datos del cliente usando HuggingFace y Unsloth.",
+          "Optimización del rendimiento mediante experimentación iterativa.",
+          "Creación de imágenes Docker para servicios con interfaz de inferencia de IA.",
+          "Despliegue en instancias de Azure Container Apps."
+        ]
       },      
     ]
   }

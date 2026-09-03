@@ -34,7 +34,7 @@ export default function HomePage() {
           </div>
 
           <p className="text-slate-400 max-w-2xl leading-relaxed text-sm sm:text-base">
-            Especializado en desarrollo web fullstack, aplicaciones de software y experimentación con inteligencia artificial. Graduado en DAW y finalizando el Grado en Ingeniería Informática.
+            Con experiencia en desarrollo web fullstack y aplicaciones de software. Graduado en DAW y finalizando el Grado en Ingeniería Informática.
           </p>
 
           {/* Botones de Acción Rápidos */}
@@ -45,12 +45,13 @@ export default function HomePage() {
             >
               Ver Proyectos
             </Link>
-            <Link
-              href="/cv"
+            <a
+              href={datosContacto.curriculumPdf}
+              download
               className="bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold px-5 py-2.5 rounded-lg border border-slate-600 transition-colors text-sm"
             >
-              Ver CV Completo
-            </Link>
+              Descargar CV
+            </a>
             <a
               href={`mailto:${datosContacto.email}`}
               className="text-slate-400 hover:text-white underline text-sm transition-colors py-2 px-1"
@@ -67,9 +68,6 @@ export default function HomePage() {
           <h2 className="text-2xl font-bold text-white tracking-tight">
             Especialidades y Tecnologías
           </h2>
-          <Link href="/cv" className="text-sm text-blue-400 hover:underline">
-            Detalles en CV →
-          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -154,14 +152,9 @@ export default function HomePage() {
       <section className="bg-gradient-to-r from-blue-900/30 to-slate-800/40 p-8 rounded-2xl border border-blue-900/40 text-center space-y-4">
         <h2 className="text-2xl font-bold text-white">¿Interesado en mi perfil?</h2>
         <p className="text-slate-300 max-w-xl mx-auto text-sm sm:text-base">
-          Puedes revisar mi trayectoria académica y profesional completa en la sección del CV o descargar una copia lista para imprimir.
+          Puedes conocer mis principales áreas de especialización y descargar una copia de mi CV lista para imprimir.
         </p>
         <div className="pt-2 flex flex-wrap justify-center gap-3">
-          <Link href="/cv"
-          className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-colors text-sm"
-          >
-            Ver CV
-          </Link>
           <a
             href={datosContacto.curriculumPdf}
             download
