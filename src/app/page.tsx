@@ -156,12 +156,12 @@ export default function HomePage() {
         <p className="text-slate-300 max-w-xl mx-auto text-sm sm:text-base">
           Puedes revisar mi trayectoria académica y profesional completa en la sección del CV o descargar una copia lista para imprimir.
         </p>
-        <div className="pt-2">
+        <div className="pt-2 flex flex-wrap justify-center gap-3">
           <Link href="/cv"
           className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-colors text-sm"
           >
-            Ver
-              </Link>
+            Ver CV
+          </Link>
           <a
             href={datosContacto.curriculumPdf}
             download
