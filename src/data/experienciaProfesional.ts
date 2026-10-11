@@ -6,14 +6,14 @@ export const experienciaProfesional = [
     rol: "Programador",
     empresa: "Inerza",
     urlEmpresa: "https://www.inerza.com/",
-    contexto: "Beca Inserta Fundación Universitaria de Las Palmas",
+    contexto: "Beca Inserta de la Fundación Universitaria de Las Palmas",
     tareas: [
       {
-        titulo: "Desarrollo y mantenimiento de aplicación .net",
+        titulo: "Desarrollo y mantenimiento de aplicaciones en .NET",
         detalles: [
           "Desarrollo de una aplicación web y de escritorio en C#.",
-          "Integración con una API REST y actualizaciones diarias según cliente.",
-          "Trabajo con metodología Agile Scrum.",
+          "Integración con una API REST y aplicación de actualizaciones diarias según las necesidades del cliente.",
+          "Trabajo con metodología ágil Scrum.",
           "Creación de pruebas unitarias y end-to-end, y uso de Git."
         ]
       }
@@ -23,20 +23,20 @@ export const experienciaProfesional = [
     id: "inerza-practicas-ciclo",
     fechaInicio: "Marzo 2025",
     fechaFin: "Junio 2025",
-    rol: "Analista/Desarrollador",
+    rol: "Analista y desarrollador",
     empresa: "Inerza",
     urlEmpresa: "https://www.inerza.com/",
-    contexto: "Prácticas Formación Profesional",
+    contexto: "Prácticas de Formación Profesional",
     tareas: [
       {
-        titulo: "Fine-tuning de modelos de IA y su despliegue en contenedores Docker en azure",
+        titulo: "Ajuste de modelos de IA y despliegue con Docker en Azure",
         detalles: [
-          "Ajuste de modelos preentrenados con datos del cliente usando HuggingFace y Unsloth.",
+          "Ajuste de modelos preentrenados con datos del cliente mediante Hugging Face y Unsloth.",
           "Optimización del rendimiento mediante experimentación iterativa.",
           "Creación de imágenes Docker para servicios con interfaz de inferencia de IA.",
-          "Despliegue en instancias de Azure Container Apps."
+          "Despliegue en Azure Container Apps."
         ]
-      },      
+      }
     ]
   }
 ];
