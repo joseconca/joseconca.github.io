@@ -5,10 +5,6 @@ import { proyectos } from "@/data/proyectos";
 
 export default function HomePage() {
   const proyectosDestacados = proyectos.slice(0, 3);
-  const formatearNombreCategoria = (categoria: string) =>
-    categoria
-      .replace(/([a-z])([A-Z])/g, "$1 $2")
-      .replace(/^./, (letra) => letra.toUpperCase());
 
   return (
     <div className="space-y-16">
@@ -35,11 +31,12 @@ export default function HomePage() {
           <p className="text-slate-300 max-w-2xl leading-relaxed text-sm sm:text-base">
             Desarrollador con experiencia profesional en aplicaciones de software con C#/.NET,
             integración de APIs REST y pruebas automatizadas. También trabajo con Python,
-            FastAPI, SQL y tecnologías full stack, y utilizo agentes de programación con IA
-            como apoyo para implementar, depurar y mejorar código.
+            FastAPI, SQL y tecnologías full stack, y utilizo asistentes y agentes de programación
+            con IA como apoyo para implementar, depurar y revisar código.
           </p>
           <p className="text-slate-400 max-w-2xl leading-relaxed text-sm sm:text-base">
-            Técnico Superior en Desarrollo de Aplicaciones Web y estudiante de Ingeniería Informática.
+            Técnico Superior en Desarrollo de Aplicaciones Web. Actualmente curso el Grado en
+            Ingeniería Informática y estoy realizando el Trabajo de Fin de Grado.
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-1">
@@ -65,7 +62,7 @@ export default function HomePage() {
               <span className="text-slate-300">{datosContacto.localizacion}</span>
             </div>
             <div>
-              <span className="text-slate-500">Email: </span>
+              <span className="text-slate-500">Correo: </span>
               <a href={`mailto:${datosContacto.email}`} className="text-slate-300 hover:text-blue-400 hover:underline transition-colors">
                 {datosContacto.email}
               </a>
@@ -105,9 +102,7 @@ export default function HomePage() {
               key={categoria}
               className="bg-slate-800/30 p-6 rounded-xl border border-slate-800 hover:border-slate-700 transition-colors"
             >
-              <h3 className="text-lg font-bold text-blue-400 mb-2">
-                {formatearNombreCategoria(categoria)}
-              </h3>
+              <h3 className="text-lg font-bold text-blue-400 mb-2">{categoria}</h3>
               <p className="text-slate-400 text-sm mb-4">{datos.descripcion}</p>
               <div className="flex flex-wrap gap-2">
                 {datos.tecnologias.map((tecnologia) => (
@@ -125,9 +120,7 @@ export default function HomePage() {
       <section className="space-y-6">
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <div>
-            <h2 className="text-2xl font-bold text-white tracking-tight">
-              Proyectos destacados
-            </h2>
+            <h2 className="text-2xl font-bold text-white tracking-tight">Proyectos destacados</h2>
             <p className="text-slate-400 text-sm mt-1">
               Aplicaciones y proyectos donde puedes explorar el código y las decisiones técnicas.
             </p>
@@ -156,23 +149,13 @@ export default function HomePage() {
                   ))}
                 </div>
                 {proyecto.url && (
-                  <a
-                    href={proyecto.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex mt-4 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors"
-                  >
+                  <a href={proyecto.url} target="_blank" rel="noreferrer" className="inline-flex mt-4 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors">
                     Ver código en GitHub ↗
                   </a>
                 )}
                 {proyecto.urlDirecto && (
-                  <a
-                    href={proyecto.urlDirecto}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex mt-4 ml-4 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors"
-                  >
-                    Probar aplicación ↗
+                  <a href={proyecto.urlDirecto} target="_blank" rel="noreferrer" className="inline-flex mt-4 ml-4 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors">
+                    Ver demo ↗
                   </a>
                 )}
               </div>
