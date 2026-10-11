@@ -15,40 +15,35 @@ export default function Navbar() {
   const rutaActual = pathname?.replace(/\/$/, "") || "/";
 
   return (
-    <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 min-h-16 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <Link href="/" className="shrink-0 whitespace-nowrap font-bold text-lg text-white hover:text-blue-400 transition-colors">
-        Jose Conca <span className="text-blue-500 font-normal text-sm">/ Software</span>
-      </Link>
+    <nav className="site-nav">
+      <div className="site-nav-inner">
+        <Link href="/" className="site-brand" aria-label="Jose Conca, inicio">
+          <span className="site-brand-mark" aria-hidden="true">JC</span>
+          <span>Jose Conca <span className="text-slate-500 font-normal">/ Software</span></span>
+        </Link>
 
-      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-6 text-sm font-medium">
-        {enlaces.map((enlace) => {
-          const estaActivo =
-            enlace.href === "/"
-              ? rutaActual === "/"
-              : rutaActual === enlace.href || rutaActual.startsWith(`${enlace.href}/`);
+        <div className="site-nav-links">
+          {enlaces.map((enlace) => {
+            const estaActivo =
+              enlace.href === "/"
+                ? rutaActual === "/"
+                : rutaActual === enlace.href || rutaActual.startsWith(`${enlace.href}/`);
 
-          return (
-            <Link
-              key={enlace.href}
-              href={enlace.href}
-              className={`px-2 py-1.5 rounded-md transition-colors ${
-                estaActivo
-                  ? "bg-blue-600/20 text-blue-400 border border-blue-500/40"
-                  : "text-slate-300 hover:text-blue-400"
-              }`}
-              aria-current={estaActivo ? "page" : undefined}
-            >
-              {enlace.label}
-            </Link>
-          );
-        })}
-        <a
-          href={datosContacto.curriculumPdf}
-          download
-          className="shrink-0 bg-blue-600 hover:bg-blue-500 text-white px-3 py-1.5 rounded-md font-semibold transition-colors text-xs sm:text-sm"
-        >
-          Descargar CV
-        </a>
+            return (
+              <Link
+                key={enlace.href}
+                href={enlace.href}
+                className="site-nav-link"
+                aria-current={estaActivo ? "page" : undefined}
+              >
+                {enlace.label}
+              </Link>
+            );
+          })}
+          <a href={datosContacto.curriculumPdf} download className="site-nav-cta">
+            Descargar CV <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
     </nav>
   );
