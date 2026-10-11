@@ -10,5 +10,5 @@ export const datosContacto = {
     "Técnico Superior en Desarrollo de Aplicaciones Web",
     "Discapacidad: 39%"
   ],
-  curriculumPdf: "/CV_Jose_Conca_082026.pdf"
+  curriculumPdf: "/CV_Jose_Conca.pdf"
 };
