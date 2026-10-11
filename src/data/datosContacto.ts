@@ -1,6 +1,6 @@
 export const datosContacto = {
   nombre: "Jose Conca",
-  rol: "Desarrollador",
+  rol: "Desarrollador de software junior · Backend y Full Stack",
   email: "vl.conca@gmail.com",
   localizacion: "Telde, Las Palmas",
   webCv: "https://joseconca.github.io",
@@ -10,5 +10,5 @@ export const datosContacto = {
     "Técnico Superior en Desarrollo de Aplicaciones Web",
     "Discapacidad: 39%"
   ],
-  curriculumPdf: "/CV_Jose_Conca_082026.pdf" 
+  curriculumPdf: "/CV_Jose_Conca_082026.pdf"
 };
