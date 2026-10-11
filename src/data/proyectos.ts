@@ -2,48 +2,50 @@ export const proyectos = [
   {
     id: "trabajoCiclo-fastAPI-find-my-pet",
     titulo: "Find My Pet",
-    tecnologias: ["FastAPI", "Python", "PostgreSQL", "Google Maps API"],
+    tecnologias: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "Google Maps API"],
     descripcion:
-      "Aplicación web para la gestión de mascotas perdidas. Implementación para la creación, lectura y eliminación de registros de mascotas, con autenticación y autorización y uso de APIs externas.",
+      "Aplicación web para registrar mascotas perdidas y sus avistamientos. El backend está desarrollado con FastAPI y SQLAlchemy, con persistencia en SQLite. Permite gestionar usuarios y mascotas, iniciar sesión y registrar y consultar avistamientos geolocalizados que se muestran en un mapa de Google Maps.",
     url: "https://github.com/joseconca/proyecto-final-DAW",
   },
   {
     id: "TFG-historical-events-nextjs",
-    titulo: "Gestor de Eventos Históricos de la informática",
-    tecnologias: ["Next.js", "React", "TypeScript", "PostgreSQL"],
+    titulo: "Timeline: historia de la informática",
+    tecnologias: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma ORM", "dnd-kit"],
     descripcion:
-      "Aplicación web fullstack interactiva con drag and drop utilizando Server Actions de Next.js y componentes de formulario en React para la creación, lectura y eliminación de registros almacenados en una base de datos relacional.",
+      "Juego web tipo Timeline en el que hay que colocar eventos de la historia de la informática en orden cronológico mediante drag and drop. Persiste los eventos y las partidas en PostgreSQL con Prisma, valida las colocaciones y registra puntuaciones según el resultado, los errores y el tiempo. Incluye una sección de administración protegida para crear, editar y eliminar eventos.",
+    url: "https://github.com/joseconca/proyecto-timeline",
   },
   {
     id: "gremio-expediciones-nextjs",
     titulo: "Gremio Expediciones",
-    tecnologias: ["Next.js", "TypeScript", "Prisma"],
+    tecnologias: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Zustand", "Leaflet"],
     descripcion:
-      "Juego web en desarrollo para gestionar expediciones y generar misiones aleatorias, construida con Next.js, TypeScript y Prisma.",
+      "RPG web en desarrollo centrado en la gestión de una base y las expediciones. Incluye personajes con clases, edificios mejorables, inventario y equipo, habilidades, misiones generadas por dificultad y duración, viajes sobre un mapa geográfico, combates por turnos, recompensas y sistemas de comercio y asedio. Utiliza PostgreSQL y Prisma para persistir los datos e incluye pruebas automatizadas para partes de la lógica de juego y las API.",
     url: "https://github.com/joseconca/gremio-expediciones",
   },
   {
     id: "HTML-canvas-pokemon-spaceinvaders",
-    titulo: "Juego Pokémon estilo Space Invaders",
-    tecnologias: ["HTML", "CSS", "JavaScript"],
+    titulo: "¡Corre, Pikachu, corre!",
+    tecnologias: ["HTML5 Canvas", "CSS", "JavaScript (módulos ES)"],
     descripcion:
-      "Juego clásico de arcade implementado con tecnologías web modernas. Incluye mecánicas de disparo, movimiento de enemigos y sistema de puntuación.",
+      "Juego arcade inspirado en Space Invaders, con personajes del universo Pokémon. Permite elegir personaje, moverse y disparar a oleadas de enemigos, enfrentarse a jefes y acumular puntuación. Incluye controles táctiles además de teclado.",
     url: "https://github.com/joseconca/juego-pokemon-javascript",
     urlDirecto: "https://joseconca.github.io/juego-pokemon-javascript/",
   },
   {
     id: "joseconca-github-pages",
     titulo: "Este portafolio profesional",
-    tecnologias: ["Next.js", "React", "TypeScript", "TailwindCSS"],
+    tecnologias: ["Next.js", "React", "TypeScript", "Tailwind CSS", "GitHub Actions"],
     descripcion:
-      "Portafolio profesional desarrollado como una aplicación web estática con Next.js, con contenido gestionado desde módulos de datos y despliegue automatizado en GitHub Pages.",
+      "Portafolio profesional con Next.js y contenido separado en módulos de datos. Se genera como sitio estático y se publica en GitHub Pages mediante un flujo de despliegue automatizado con GitHub Actions.",
     url: "https://github.com/joseconca/joseconca.github.io",
     urlDirecto: "https://joseconca.github.io/",
   },
   {
     id: "Otros-proyectos",
     titulo: "Otros proyectos",
-    descripcion: "Colección de todo mi repositorio en Github.",
+    descripcion:
+      "Más proyectos y ejercicios de programación disponibles en mi perfil público de GitHub.",
     url: "https://github.com/joseconca?tab=repositories",
   },
 ];
