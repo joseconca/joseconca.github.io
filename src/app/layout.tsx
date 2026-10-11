@@ -28,15 +28,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es">
-      <body className="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
-        <header className="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
-          <Navbar />
-        </header>
-        <div className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          {children}
-        </div>
-        <footer className="border-t border-slate-800 py-6 text-center text-sm text-slate-500">
-          <p>© {new Date().getFullYear()} Jose Conca — Telde, Las Palmas</p>
+      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col font-sans`}>
+        <Navbar />
+        <main className="site-main">{children}</main>
+        <footer className="site-footer">
+          <p>© {new Date().getFullYear()} Jose Conca · Telde, Las Palmas</p>
+          <p className="mt-2">Desarrollo de software · Backend · Full Stack</p>
         </footer>
       </body>
     </html>
