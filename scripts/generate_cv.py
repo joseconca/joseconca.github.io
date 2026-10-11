@@ -5,7 +5,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, HRFlowable
 
-OUT = Path(__file__).resolve().parents[1] / "public" / "CV_Jose_Conca_082026.pdf"
+OUT = Path(__file__).resolve().parents[1] / "public" / "CV_Jose_Conca.pdf"
 NAVY = colors.HexColor("#14263D")
 BLUE = colors.HexColor("#2463A6")
 PALE = colors.HexColor("#EDF3F9")
