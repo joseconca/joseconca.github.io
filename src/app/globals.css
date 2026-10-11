@@ -9,8 +9,8 @@
   --surface-raised: #15223a;
   --border: rgba(148, 163, 184, 0.16);
   --muted: #98a8bf;
-  --accent: #67e8f9;
-  --accent-strong: #38bdf8;
+  --accent: #93c5fd;
+  --accent-strong: #60a5fa;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -205,22 +205,8 @@ button:focus-visible {
   overflow: hidden;
   border: 1px solid rgba(148, 163, 184, .18);
   border-radius: 28px;
-  background:
-    radial-gradient(ellipse at 100% 0%, rgba(14, 165, 233, .14), transparent 23rem),
-    linear-gradient(145deg, rgba(17, 28, 48, .96), rgba(10, 17, 31, .92));
-  box-shadow: 0 28px 90px rgba(0, 0, 0, .22);
-}
-
-.hero-panel::after {
-  content: "";
-  position: absolute;
-  top: -90px;
-  right: 18%;
-  width: 1px;
-  height: 180%;
-  transform: rotate(32deg);
-  background: linear-gradient(transparent, rgba(103, 232, 249, .12), transparent);
-  pointer-events: none;
+  background: linear-gradient(145deg, rgba(17, 28, 48, .98), rgba(10, 17, 31, .96));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .18);
 }
 
 .hero-copy {
@@ -306,12 +292,11 @@ button:focus-visible {
 
 .hero-avatar-frame {
   position: relative;
-  padding: 10px;
-  border: 1px solid rgba(103, 232, 249, .25);
-  border-radius: 26px;
-  background: linear-gradient(145deg, rgba(103, 232, 249, .14), rgba(59, 130, 246, .05));
-  box-shadow: 0 24px 60px rgba(0, 0, 0, .28);
-  transform: rotate(2deg);
+  padding: 7px;
+  border: 1px solid rgba(148, 163, 184, .24);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, .72);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, .22);
 }
 
 .hero-avatar {
@@ -320,21 +305,24 @@ button:focus-visible {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center;
-  border-radius: 18px;
+  border-radius: 12px;
   background: #17243a;
-  filter: saturate(.88);
+  filter: saturate(.92);
 }
 
 .hero-status {
-  position: absolute;
-  right: -18px;
-  bottom: 26px;
+  position: relative;
+  right: auto;
+  bottom: auto;
   display: flex;
   align-items: center;
   gap: .55rem;
-  padding: .75rem .9rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: .85rem auto 0;
+  padding: .65rem .8rem;
   border: 1px solid rgba(148, 163, 184, .2);
-  border-radius: 12px;
+  border-radius: 10px;
   background: rgba(12, 21, 37, .94);
   color: #d8e4f2;
   font-size: .78rem;
@@ -734,9 +722,10 @@ button:focus-visible {
   }
 
   .hero-aside {
-    width: min(55%, 230px);
-    justify-self: start;
-    margin: .5rem 0 0 .4rem;
+    order: -1;
+    width: min(58%, 230px);
+    justify-self: center;
+    margin: 0 auto;
   }
 
   .hero-avatar {
@@ -744,7 +733,8 @@ button:focus-visible {
   }
 
   .hero-status {
-    right: -28px;
+    justify-content: center;
+    margin-top: .75rem;
   }
 
   .skills-grid,
@@ -792,6 +782,11 @@ button:focus-visible {
 
   .hero-aside {
     width: min(58%, 190px);
+  }
+
+  .hero-status {
+    font-size: .72rem;
+    padding: .6rem .65rem;
   }
 
   .contact-strip {
