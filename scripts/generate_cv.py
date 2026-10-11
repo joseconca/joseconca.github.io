@@ -17,15 +17,15 @@ s = getSampleStyleSheet()
 s.add(ParagraphStyle(name="NameCV", fontName="Helvetica-Bold", fontSize=24, leading=28, textColor=NAVY, spaceAfter=2))
 s.add(ParagraphStyle(name="RoleCV", fontName="Helvetica-Bold", fontSize=9.5, leading=13, textColor=BLUE, spaceAfter=5))
 s.add(ParagraphStyle(name="ContactCV", fontName="Helvetica", fontSize=8, leading=11, textColor=MUTED, spaceAfter=1))
-s.add(ParagraphStyle(name="SectionCV", fontName="Helvetica-Bold", fontSize=11, leading=14, textColor=NAVY, spaceBefore=10, spaceAfter=6, keepWithNext=True))
-s.add(ParagraphStyle(name="BodyCV", fontName="Helvetica", fontSize=9, leading=13, textColor=TEXT, spaceAfter=4))
-s.add(ParagraphStyle(name="BulletCV", fontName="Helvetica", fontSize=8.7, leading=12, textColor=TEXT, leftIndent=12, firstLineIndent=-8, spaceAfter=3))
-s.add(ParagraphStyle(name="JobCV", fontName="Helvetica-Bold", fontSize=9.5, leading=12, textColor=NAVY, spaceAfter=2, keepWithNext=True))
-s.add(ParagraphStyle(name="MetaCV", fontName="Helvetica-Oblique", fontSize=8, leading=10.5, textColor=MUTED, spaceAfter=5, keepWithNext=True))
-s.add(ParagraphStyle(name="LabelCV", fontName="Helvetica-Bold", fontSize=8.5, leading=11, textColor=NAVY))
-s.add(ParagraphStyle(name="TextCV", fontName="Helvetica", fontSize=8.5, leading=11.5, textColor=TEXT))
-s.add(ParagraphStyle(name="ProjectTitleCV", fontName="Helvetica-Bold", fontSize=9.5, leading=12, textColor=NAVY, spaceAfter=3))
-s.add(ParagraphStyle(name="ProjectTextCV", fontName="Helvetica", fontSize=8.6, leading=12, textColor=TEXT, spaceAfter=2))
+s.add(ParagraphStyle(name="SectionCV", fontName="Helvetica-Bold", fontSize=11, leading=14, textColor=NAVY, spaceBefore=12, spaceAfter=8, keepWithNext=True))
+s.add(ParagraphStyle(name="BodyCV", fontName="Helvetica", fontSize=10, leading=14.5, textColor=TEXT, spaceAfter=6))
+s.add(ParagraphStyle(name="BulletCV", fontName="Helvetica", fontSize=9.3, leading=13.5, textColor=TEXT, leftIndent=13, firstLineIndent=-8, spaceAfter=4))
+s.add(ParagraphStyle(name="JobCV", fontName="Helvetica-Bold", fontSize=10, leading=13, textColor=NAVY, spaceAfter=3, keepWithNext=True))
+s.add(ParagraphStyle(name="MetaCV", fontName="Helvetica-Oblique", fontSize=8.5, leading=11.5, textColor=MUTED, spaceAfter=6, keepWithNext=True))
+s.add(ParagraphStyle(name="LabelCV", fontName="Helvetica-Bold", fontSize=9, leading=12, textColor=NAVY))
+s.add(ParagraphStyle(name="TextCV", fontName="Helvetica", fontSize=9, leading=12.5, textColor=TEXT))
+s.add(ParagraphStyle(name="ProjectTitleCV", fontName="Helvetica-Bold", fontSize=10, leading=13, textColor=NAVY, spaceAfter=4))
+s.add(ParagraphStyle(name="ProjectTextCV", fontName="Helvetica", fontSize=9.2, leading=13.5, textColor=TEXT, spaceAfter=3))
 s.add(ParagraphStyle(name="FooterCV", fontName="Helvetica", fontSize=7.5, leading=9, textColor=MUTED))
 
 def p(text, style="BodyCV"):
@@ -50,8 +50,8 @@ def info_table(rows, widths, label_column=False):
         ("VALIGN", (0,0), (-1,-1), "TOP"),
         ("LEFTPADDING", (0,0), (-1,-1), 3*mm),
         ("RIGHTPADDING", (0,0), (-1,-1), 3*mm),
-        ("TOPPADDING", (0,0), (-1,-1), 2.3*mm),
-        ("BOTTOMPADDING", (0,0), (-1,-1), 2.3*mm),
+        ("TOPPADDING", (0,0), (-1,-1), 2.8*mm),
+        ("BOTTOMPADDING", (0,0), (-1,-1), 2.8*mm),
     ]
     if label_column:
         cmds.append(("BACKGROUND", (0,0), (0,-1), PALE))
@@ -71,8 +71,8 @@ def project_card(title, description, url):
         ("LINEBEFORE", (0,0), (0,0), 2.2, BLUE),
         ("LEFTPADDING", (0,0), (-1,-1), 4*mm),
         ("RIGHTPADDING", (0,0), (-1,-1), 4*mm),
-        ("TOPPADDING", (0,0), (-1,-1), 3*mm),
-        ("BOTTOMPADDING", (0,0), (-1,-1), 3*mm),
+        ("TOPPADDING", (0,0), (-1,-1), 4*mm),
+        ("BOTTOMPADDING", (0,0), (-1,-1), 3.5*mm),
     ]))
     return table
 
@@ -138,7 +138,7 @@ story += [
     project_card("Find My Pet · API y aplicación web",
                  "Aplicación para gestionar mascotas perdidas y avistamientos geolocalizados. Backend con Python, FastAPI y SQLAlchemy; SQLite y Google Maps API.",
                  "https://github.com/joseconca/proyecto-final-DAW"),
-    Spacer(1, 3*mm),
+    Spacer(1, 4*mm),
     project_card("Timeline: historia de la informática · Aplicación full stack",
                  "Juego web para ordenar cronológicamente eventos. Desarrollado con Next.js, React, TypeScript, PostgreSQL y Prisma, con lógica de juego y gestión de eventos.",
                  "https://github.com/joseconca/proyecto-timeline"),
