@@ -17,7 +17,7 @@ export default function Navbar() {
   return (
     <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 min-h-16 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
       <Link href="/" className="shrink-0 whitespace-nowrap font-bold text-lg text-white hover:text-blue-400 transition-colors">
-        Jose Conca <span className="text-blue-500 font-normal text-sm">/ Dev</span>
+        Jose Conca <span className="text-blue-500 font-normal text-sm">/ Software</span>
       </Link>
 
       <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-6 text-sm font-medium">
