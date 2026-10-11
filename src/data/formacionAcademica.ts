@@ -5,7 +5,7 @@ export const formacionAcademica = [
     institucion: "Universidad Politécnica de Valencia",
     titulacion: "Grado en Ingeniería Informática",
     detalles: [
-      "Especialidad en Tecnologías de la información.",
+      "Especialidad en Tecnologías de la Información.",
       "Actualmente realizando el Trabajo de Fin de Grado (TFG)."
     ]
   },
