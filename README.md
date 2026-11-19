@@ -23,7 +23,7 @@ El resultado se genera en la carpeta `out/`.
 
 ## Despliegue en GitHub Pages
 
-El proyecto está configurado como una exportación estática. El workflow de `.github/workflows/deploy-pages.yml` ejecuta `npm run build` y publica la carpeta `out/` automáticamente después de cada push a `main`.
+El proyecto está configurado como una exportación estática. El workflow de `.github/workflows/deploy-pages.yml` regenera el CV, ejecuta `npm run build` y publica la carpeta `out/` automáticamente después de cada push a `main`.
 
 En la configuración del repositorio, abre **Settings → Pages** y selecciona **GitHub Actions** como origen. La web estará disponible en [https://joseconca.github.io](https://joseconca.github.io).
 
@@ -33,3 +33,27 @@ En la configuración del repositorio, abre **Settings → Pages** y selecciona *
 - `src/data/`: información del perfil, experiencia, formación, proyectos y tecnologías.
 - `public/`: imágenes y recursos públicos.
 - `next.config.ts`: configuración de la exportación estática.
+
+## Currículum automático
+
+La web y el CV obtienen la información de los mismos módulos de `src/data/`:
+
+- `datosContacto.ts`: nombre, rol, perfil profesional, contacto y otros datos del CV.
+- `experienciaProfesional.ts`: puestos, periodos y tareas.
+- `formacionAcademica.ts`: formación académica.
+- `skillStack.ts`: competencias y tecnologías.
+- `proyectos.ts`: los primeros tres proyectos que tengan tecnologías se incluyen en el CV.
+
+Después de editar estos archivos, haz push a `main`. GitHub Actions ejecuta
+`scripts/generate_cv.py` antes de compilar la web: así regenera el PDF y publica
+el sitio con el enlace «Descargar CV» actualizado. No hace falta editar el PDF.
+
+Para generarlo en local, con Node.js y Python instalados:
+
+```bash
+npm ci
+python -m pip install reportlab
+npm run cv:generate
+```
+
+El PDF se crea en la ruta indicada por `datosContacto.curriculumPdf` dentro de `public/`.
