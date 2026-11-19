@@ -11,7 +11,6 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
 from reportlab.platypus import (
     HRFlowable,
-    PageBreak,
     Paragraph,
     SimpleDocTemplate,
     Spacer,
@@ -177,24 +176,6 @@ def generate():
                     story.append(p('• ' + detail, 'BulletCV'))
             story.append(Spacer(1, 2 * mm))
 
-    if data['skillStack']:
-        story.append(p('COMPETENCIAS TÉCNICAS', 'SectionCV'))
-        skills = [
-            [p(category, 'LabelCV'), p(', '.join(values['tecnologias']), 'TextCV')]
-            for category, values in data['skillStack'].items()
-        ]
-        story.append(info_table(skills, [53 * mm, 121 * mm], label_column=True))
-
-    story.append(PageBreak())
-    highlighted_projects = [project for project in data['proyectos'] if project.get('tecnologias')][:3]
-    if highlighted_projects:
-        story.append(p('PROYECTOS SELECCIONADOS', 'SectionCV'))
-        for project in highlighted_projects:
-            story.extend([
-                project_card(project['titulo'], project['descripcion'], project.get('url', ''), p),
-                Spacer(1, 3.5 * mm),
-            ])
-
     if data['formacionAcademica']:
         story.append(p('FORMACIÓN ACADÉMICA', 'SectionCV'))
         education = []
@@ -206,6 +187,25 @@ def generate():
             entries.extend(p(detail, 'TextCV') for detail in item.get('detalles', []))
             education.append([entries])
         story.append(info_table(education, [174 * mm]))
+
+
+    if data['skillStack']:
+        story.append(p('COMPETENCIAS TÉCNICAS', 'SectionCV'))
+        skills = [
+            [p(category, 'LabelCV'), p(', '.join(values['tecnologias']), 'TextCV')]
+            for category, values in data['skillStack'].items()
+        ]
+        story.append(info_table(skills, [53 * mm, 121 * mm], label_column=True))
+
+    highlighted_projects = [project for project in data['proyectos'] if project.get('tecnologias')][:3]
+    if highlighted_projects:
+        story.append(p('PROYECTOS SELECCIONADOS', 'SectionCV'))
+        for project in highlighted_projects:
+            story.extend([
+                project_card(project['titulo'], project['descripcion'], project.get('url', ''), p),
+                Spacer(1, 3.5 * mm),
+            ])
+
 
     story.extend([
         Spacer(1, 4 * mm),
