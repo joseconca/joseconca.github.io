@@ -14,13 +14,7 @@ export default function HomePage() {
           <h1 className="hero-title">{datosContacto.nombre}</h1>
           <p className="hero-role">{datosContacto.rol}</p>
           <p className="hero-description">
-            Desarrollo software con foco en <strong>backend, APIs y aplicaciones full stack</strong>.
-            Tengo experiencia profesional con C#/.NET, integración de APIs REST y pruebas automatizadas,
-            además de trabajar con Python, SQL y tecnologías web modernas.
-          </p>
-          <p className="hero-description" style={{ marginTop: ".8rem" }}>
-            Técnico Superior en Desarrollo de Aplicaciones Web y estudiante del Grado en Ingeniería Informática.
-            Utilizo herramientas de IA como apoyo al desarrollo, sin perder de vista la calidad y el mantenimiento del código.
+            {datosContacto.perfilProfesional}
           </p>
 
           <div className="hero-actions">
