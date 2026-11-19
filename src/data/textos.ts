@@ -51,7 +51,7 @@ export const textos = {
     },
     pie: {descripcion: "Desarrollo de software · Backend · Full Stack"},
     cv: {
-      perfil: "PERFIL PROFESIONAL", otros: "OTROS DATOS",
+      perfil: "SOBRE MÍ", otros: "OTROS DATOS",
       experiencia: "EXPERIENCIA PROFESIONAL", formacion: "FORMACIÓN ACADÉMICA",
       competencias: "COMPETENCIAS TÉCNICAS", proyectos: "PROYECTOS SELECCIONADOS",
       portfolio: "Portafolio", codigo: "Código", ocupacion: "Desarrollo de software"
@@ -102,7 +102,7 @@ export const textos = {
     },
     pie: {descripcion: "Software development · Backend · Full Stack"},
     cv: {
-      perfil: "PROFESSIONAL PROFILE", otros: "ADDITIONAL INFORMATION",
+      perfil: "ABOUT ME", otros: "ADDITIONAL INFORMATION",
       experiencia: "PROFESSIONAL EXPERIENCE", formacion: "EDUCATION",
       competencias: "TECHNICAL SKILLS", proyectos: "SELECTED PROJECTS",
       portfolio: "Portfolio", codigo: "Code", ocupacion: "Software development"
