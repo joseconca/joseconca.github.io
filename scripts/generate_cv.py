@@ -159,6 +159,12 @@ def generate():
     story.extend([header, Spacer(1, 4 * mm), p('PERFIL PROFESIONAL', 'SectionCV'),
                   p(contact['perfilProfesional'])])
 
+    if contact.get('otrosDatos'):
+        story.append(p('OTROS DATOS', 'SectionCV'))
+        rows = [[p(entry['etiqueta'], 'LabelCV'), p(entry['valor'], 'TextCV')]
+                for entry in contact['otrosDatos']]
+        story.append(info_table(rows, [35 * mm, 139 * mm], label_column=True))
+
     if data['experienciaProfesional']:
         story.append(p('EXPERIENCIA PROFESIONAL', 'SectionCV'))
         for job in data['experienciaProfesional']:
@@ -200,12 +206,6 @@ def generate():
             entries.extend(p(detail, 'TextCV') for detail in item.get('detalles', []))
             education.append([entries])
         story.append(info_table(education, [174 * mm]))
-
-    if contact.get('otrosDatos'):
-        story.append(p('OTROS DATOS', 'SectionCV'))
-        rows = [[p(entry['etiqueta'], 'LabelCV'), p(entry['valor'], 'TextCV')]
-                for entry in contact['otrosDatos']]
-        story.append(info_table(rows, [35 * mm, 139 * mm], label_column=True))
 
     story.extend([
         Spacer(1, 4 * mm),
