@@ -13,9 +13,8 @@ export const formacionAcademica = [
     id: "rincon-daw",
     periodo: "2025",
     institucion: "IES El Rincón",
-    titulacion: "Higher Technician in Development of Web Applications",
+    titulacion: "Higher Technician in Web Application Development",
     detalles: [
-      "Official Spanish Higher Vocational Education and Training qualification (EQF Level 5).",
       "Training in frontend and backend web application development."
     ]
   }
