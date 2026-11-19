@@ -1,19 +1,18 @@
-import { experienciaProfesional } from "@/data/experienciaProfesional";
-import { formacionAcademica } from "@/data/formacionAcademica";
+import { getPortfolio } from "@/data/portfolio";
+import { textos, type Idioma } from "@/data/textos";
 
-export default function TrayectoriaPage() {
+export default function TrajectoryContent({ idioma }: { idioma: Idioma }) {
+  const { experienciaProfesional, formacionAcademica } = getPortfolio(idioma);
+  const t = textos[idioma].trayectoria;
+
   return (
     <div className="page-stack">
       <section>
         <header className="page-header">
-          <span className="eyebrow">Experiencia y aprendizaje</span>
-          <h1 className="page-title">Trayectoria</h1>
-          <p className="page-intro">
-            Mi recorrido en desarrollo de software: experiencia profesional, colaboración en equipos
-            y formación técnica orientada a construir aplicaciones mantenibles.
-          </p>
+          <span className="eyebrow">{t.etiqueta}</span>
+          <h1 className="page-title">{t.titulo}</h1>
+          <p className="page-intro">{t.descripcion}</p>
         </header>
-
         <div className="timeline-list">
           {experienciaProfesional.map((experiencia) => (
             <article key={experiencia.id} className="timeline-card">
@@ -47,14 +46,11 @@ export default function TrayectoriaPage() {
       <section>
         <div className="section-heading">
           <div>
-            <span className="eyebrow">Formación</span>
-            <h2 className="section-title">Formación académica</h2>
-            <p className="section-description">
-              Estudios centrados en el desarrollo de aplicaciones y los fundamentos de la ingeniería informática.
-            </p>
+            <span className="eyebrow">{t.formacionEtiqueta}</span>
+            <h2 className="section-title">{t.formacionTitulo}</h2>
+            <p className="section-description">{t.formacionDescripcion}</p>
           </div>
         </div>
-
         <div className="education-grid">
           {formacionAcademica.map((formacion) => (
             <article key={formacion.id} className="education-card">

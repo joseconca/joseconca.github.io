@@ -57,3 +57,21 @@ npm run cv:generate
 ```
 
 El PDF se crea en la ruta indicada por `datosContacto.curriculumPdf` dentro de `public/`.
+
+## Español e inglés
+
+El portafolio está disponible en español (`/`, `/proyectos`, `/trayectoria`)
+y en inglés (`/en/`, `/en/proyectos/`, `/en/trayectoria/`). El selector ES/EN
+de la cabecera conserva la sección al cambiar de idioma.
+
+Los contenidos de cada versión se modifican en `src/data/`:
+
+- Español: los cinco módulos en `src/data/` (contacto, experiencia, formación, proyectos, tecnologías).
+- Inglés: los cinco módulos equivalentes en `src/data/en/`.
+- Textos de interfaz, botones, encabezados y etiquetas del CV: `src/data/textos.ts`.
+
+GitHub Actions genera `CV_Jose_Conca_ES.pdf` y `CV_Jose_Conca_EN.pdf`
+antes de compilar la web. Los botones de descarga enlazan a la versión del idioma activo.
+Por compatibilidad se sigue generando `CV_Jose_Conca.pdf` como copia del español.
+
+Para generarlos en local: `npm ci`, `python -m pip install reportlab` y `npm run cv:generate`.

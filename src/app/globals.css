@@ -826,3 +826,34 @@ button:focus-visible {
     animation-iteration-count: 1 !important;
   }
 }
+
+
+/* Selector de idioma accesible y visible en todas las páginas. */
+.language-switch {
+  display: inline-flex;
+  gap: 2px;
+  align-items: center;
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 9px;
+  padding: 3px;
+  background: rgba(148, 163, 184, .06);
+}
+.language-option {
+  min-width: 35px;
+  min-height: 33px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: .77rem;
+  font-weight: 700;
+  color: #a8b5c9;
+  text-decoration: none;
+}
+.language-option:hover {
+  color: white;
+}
+.language-option[aria-current="true"] {
+  background: rgba(8, 145, 178, .23);
+  color: #e0faff;
+}

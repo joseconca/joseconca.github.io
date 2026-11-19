@@ -1,17 +1,14 @@
-// Lee los módulos de src/data sin duplicar su contenido en otro formato.
+// Extrae el contenido del CV directamente de los módulos TypeScript de src/data.
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const ts = require('typescript');
 
 const dataDir = path.resolve(__dirname, '../src/data');
-const modules = {
-  datosContacto: 'datosContacto.ts',
-  experienciaProfesional: 'experienciaProfesional.ts',
-  formacionAcademica: 'formacionAcademica.ts',
-  proyectos: 'proyectos.ts',
-  skillStack: 'skillStack.ts',
-};
+const moduloNombres = [
+  'datosContacto', 'experienciaProfesional', 'formacionAcademica',
+  'proyectos', 'skillStack',
+];
 
 function readModule(exportName, filename) {
   const file = path.join(dataDir, filename);
@@ -25,29 +22,32 @@ function readModule(exportName, filename) {
     },
   });
   const errors = (compiled.diagnostics || []).filter(
-    (diag) => diag.category === ts.DiagnosticCategory.Error,
+    (d) => d.category === ts.DiagnosticCategory.Error,
   );
   if (errors.length) {
-    throw new Error('Error compilando ' + filename + ': ' + ts.formatDiagnosticsWithColorAndContext(errors, {
-      getCurrentDirectory: () => process.cwd(),
-      getCanonicalFileName: (name) => name,
-      getNewLine: () => '\n',
-    }));
+    throw new Error('Error compilando ' + filename + ': ' + errors.map((d) =>
+      ts.flattenDiagnosticMessageText(d.messageText, '\n')).join('\n'));
   }
-
-  // Los archivos de datos exportan objetos y arrays: no necesitan imports ni acceso al sistema.
   const exports = {};
   vm.runInNewContext(compiled.outputText, { exports }, { filename: file, timeout: 1000 });
   if (!(exportName in exports)) {
-    throw new Error('No se encontró la exportación ' + exportName + ' en ' + filename);
+    throw new Error('Falta ' + exportName + ' en ' + filename);
   }
   return JSON.parse(JSON.stringify(exports[exportName]));
 }
 
 try {
-  const data = Object.fromEntries(
-    Object.entries(modules).map(([name, file]) => [name, readModule(name, file)]),
-  );
+  const idioma = process.argv[2];
+  if (!['es', 'en'].includes(idioma)) {
+    throw new Error('Indica un idioma válido: es o en');
+  }
+  const carpeta = idioma === 'en' ? 'en/' : '';
+  const data = Object.fromEntries(moduloNombres.map((nombre) =>
+    [nombre, readModule(nombre, carpeta + nombre + '.ts')]));
+  data.textos = readModule('textos', 'textos.ts')[idioma];
+  if (!data.datosContacto.curriculumPdf.endsWith('_' + idioma.toUpperCase() + '.pdf')) {
+    throw new Error('Nombre de CV incorrecto para ' + idioma);
+  }
   process.stdout.write(JSON.stringify(data));
 } catch (error) {
   console.error(error);
