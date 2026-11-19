@@ -18,5 +18,5 @@ export const datosContacto = {
       valor: "Discapacidad reconocida del 39%."
     }
   ],
-  curriculumPdf: "/CV_Jose_Conca.pdf"
+  curriculumPdf: "/CV_Jose_Conca_ES.pdf"
 };
