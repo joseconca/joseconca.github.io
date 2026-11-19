@@ -7,7 +7,7 @@ export const datosContacto = {
   github: "https://github.com/joseconca",
   linkedin: "https://linkedin.com/in/joseconca",
   perfilProfesional:
-    "Software developer with professional experience at Inerza working with C#/.NET, REST API integration, automated testing, Git and Scrum. Higher Vocational Diploma in Web Application Development and Computer Engineering student currently working on my final degree project. Interested in building reliable applications, collaborating with technical teams and applying software development best practices.",
+    "Software developer with professional experience at Inerza working with C#/.NET, REST API integration, automated testing, Git and Scrum. I hold the Higher Technician qualification in Development of Web Applications (official Spanish vocational education, EQF Level 5) and am currently studying Computer Engineering, completing my final degree project. Interested in building reliable applications, collaborating with technical teams and applying software development best practices.",
   otrosDatos: [
     {
       etiqueta: "Languages",

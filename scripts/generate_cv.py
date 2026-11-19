@@ -142,7 +142,7 @@ def generate(idioma):
     header_rows = [
         [p(contact['nombre'], 'NameCV')],
         [p(contact['rol'].upper(), 'RoleCV')],
-        [p(contact['localizacion'] + ' · ' + contact['email'], 'ContactCV')],
+        [p(contact['localizacion'] + ' · ' + contact['email'] + ' · ' + data['contactoCv']['telefono'], 'ContactCV')],
         [p(labels['portfolio'] + ': ' + contact['webCv'], 'ContactCV')],
         [p('GitHub: ' + contact['github'] + ' · LinkedIn: ' + contact['linkedin'], 'ContactCV')],
     ]

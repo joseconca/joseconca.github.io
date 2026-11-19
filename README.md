@@ -75,3 +75,10 @@ antes de compilar la web. Los botones de descarga enlazan a la versión del idio
 Por compatibilidad se sigue generando `CV_Jose_Conca.pdf` como copia del español.
 
 Para generarlos en local: `npm ci`, `python -m pip install reportlab` y `npm run cv:generate`.
+
+### Teléfono exclusivo del CV
+
+El teléfono se edita **una sola vez** en `src/data/contactoCv.ts`.
+El exportador lo utiliza en ambos PDF, pero los componentes de la web no lo muestran.
+**Atención:** aunque no aparezca en las páginas HTML, el número es público en el
+repositorio GitHub y en los PDF descargables.

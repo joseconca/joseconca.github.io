@@ -45,6 +45,7 @@ try {
   const data = Object.fromEntries(moduloNombres.map((nombre) =>
     [nombre, readModule(nombre, carpeta + nombre + '.ts')]));
   data.textos = readModule('textos', 'textos.ts')[idioma];
+  data.contactoCv = readModule('contactoCv', 'contactoCv.ts');
   if (!data.datosContacto.curriculumPdf.endsWith('_' + idioma.toUpperCase() + '.pdf')) {
     throw new Error('Nombre de CV incorrecto para ' + idioma);
   }
