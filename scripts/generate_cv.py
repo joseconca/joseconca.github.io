@@ -1,177 +1,221 @@
+"""Genera el CV a partir de los mismos módulos src/data/ que usa la web."""
+
+import json
+import subprocess
+from html import escape
 from pathlib import Path
+
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, HRFlowable
+from reportlab.platypus import (
+    HRFlowable,
+    PageBreak,
+    Paragraph,
+    SimpleDocTemplate,
+    Spacer,
+    Table,
+    TableStyle,
+)
 
-OUT = Path(__file__).resolve().parents[1] / "public" / "CV_Jose_Conca.pdf"
-NAVY = colors.HexColor("#14263D")
-BLUE = colors.HexColor("#2463A6")
-PALE = colors.HexColor("#EDF3F9")
-TEXT = colors.HexColor("#263445")
-MUTED = colors.HexColor("#5C6878")
-RULE = colors.HexColor("#D5DEE8")
+ROOT = Path(__file__).resolve().parents[1]
+NAVY = colors.HexColor('#14263D')
+BLUE = colors.HexColor('#2463A6')
+PALE = colors.HexColor('#EDF3F9')
+TEXT = colors.HexColor('#263445')
+MUTED = colors.HexColor('#5C6878')
+RULE = colors.HexColor('#D5DEE8')
 
-s = getSampleStyleSheet()
-s.add(ParagraphStyle(name="NameCV", fontName="Helvetica-Bold", fontSize=24, leading=28, textColor=NAVY, spaceAfter=2))
-s.add(ParagraphStyle(name="RoleCV", fontName="Helvetica-Bold", fontSize=9.5, leading=13, textColor=BLUE, spaceAfter=5))
-s.add(ParagraphStyle(name="ContactCV", fontName="Helvetica", fontSize=8, leading=11, textColor=MUTED, spaceAfter=1))
-s.add(ParagraphStyle(name="SectionCV", fontName="Helvetica-Bold", fontSize=11, leading=14, textColor=NAVY, spaceBefore=12, spaceAfter=8, keepWithNext=True))
-s.add(ParagraphStyle(name="BodyCV", fontName="Helvetica", fontSize=10, leading=14.5, textColor=TEXT, spaceAfter=6))
-s.add(ParagraphStyle(name="BulletCV", fontName="Helvetica", fontSize=9.3, leading=13.5, textColor=TEXT, leftIndent=13, firstLineIndent=-8, spaceAfter=4))
-s.add(ParagraphStyle(name="JobCV", fontName="Helvetica-Bold", fontSize=10, leading=13, textColor=NAVY, spaceAfter=3, keepWithNext=True))
-s.add(ParagraphStyle(name="MetaCV", fontName="Helvetica-Oblique", fontSize=8.5, leading=11.5, textColor=MUTED, spaceAfter=6, keepWithNext=True))
-s.add(ParagraphStyle(name="LabelCV", fontName="Helvetica-Bold", fontSize=9, leading=12, textColor=NAVY))
-s.add(ParagraphStyle(name="TextCV", fontName="Helvetica", fontSize=9, leading=12.5, textColor=TEXT))
-s.add(ParagraphStyle(name="ProjectTitleCV", fontName="Helvetica-Bold", fontSize=10, leading=13, textColor=NAVY, spaceAfter=4))
-s.add(ParagraphStyle(name="ProjectTextCV", fontName="Helvetica", fontSize=9.2, leading=13.5, textColor=TEXT, spaceAfter=3))
-s.add(ParagraphStyle(name="FooterCV", fontName="Helvetica", fontSize=7.5, leading=9, textColor=MUTED))
 
-def p(text, style="BodyCV"):
-    return Paragraph(text, s[style])
+def load_data():
+    result = subprocess.run(
+        ['node', str(ROOT / 'scripts' / 'export_cv_data.cjs')],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+    return json.loads(result.stdout)
 
-def footer(canvas, doc):
-    canvas.saveState()
-    canvas.setStrokeColor(RULE)
-    canvas.setLineWidth(0.6)
-    canvas.line(18*mm, 14*mm, A4[0]-18*mm, 14*mm)
-    canvas.setFont("Helvetica", 7.5)
-    canvas.setFillColor(MUTED)
-    canvas.drawString(18*mm, 9*mm, "Jose Conca · Desarrollo de software")
-    canvas.drawRightString(A4[0]-18*mm, 9*mm, str(doc.page))
-    canvas.restoreState()
+
+def styles():
+    s = getSampleStyleSheet()
+    definitions = [
+        ('NameCV', 'Helvetica-Bold', 24, 28, NAVY, 0),
+        ('RoleCV', 'Helvetica-Bold', 9.5, 13, BLUE, 4),
+        ('ContactCV', 'Helvetica', 8, 11, MUTED, 1),
+        ('SectionCV', 'Helvetica-Bold', 11, 14, NAVY, 8),
+        ('BodyCV', 'Helvetica', 9.5, 13.5, TEXT, 6),
+        ('BulletCV', 'Helvetica', 8.8, 12.2, TEXT, 4),
+        ('JobCV', 'Helvetica-Bold', 10, 13, NAVY, 3),
+        ('MetaCV', 'Helvetica-Oblique', 8.5, 11.5, MUTED, 6),
+        ('LabelCV', 'Helvetica-Bold', 8.8, 12, NAVY, 0),
+        ('TextCV', 'Helvetica', 8.7, 12.3, TEXT, 0),
+        ('ProjectTitleCV', 'Helvetica-Bold', 10, 13, NAVY, 4),
+        ('ProjectTextCV', 'Helvetica', 9, 13, TEXT, 3),
+        ('FooterCV', 'Helvetica', 7.5, 9, MUTED, 0),
+    ]
+    for name, font, size, leading, color, after in definitions:
+        s.add(ParagraphStyle(
+            name=name,
+            fontName=font,
+            fontSize=size,
+            leading=leading,
+            textColor=color,
+            spaceAfter=after,
+            keepWithNext=name in {'SectionCV', 'JobCV'},
+            leftIndent=13 if name == 'BulletCV' else 0,
+            firstLineIndent=-8 if name == 'BulletCV' else 0,
+            spaceBefore=10 if name == 'SectionCV' else 0,
+        ))
+    return s
+
 
 def info_table(rows, widths, label_column=False):
-    table = Table(rows, colWidths=widths, hAlign="LEFT")
-    cmds = [
-        ("BOX", (0,0), (-1,-1), 0.6, RULE),
-        ("INNERGRID", (0,0), (-1,-1), 0.35, RULE),
-        ("VALIGN", (0,0), (-1,-1), "TOP"),
-        ("LEFTPADDING", (0,0), (-1,-1), 3*mm),
-        ("RIGHTPADDING", (0,0), (-1,-1), 3*mm),
-        ("TOPPADDING", (0,0), (-1,-1), 2.8*mm),
-        ("BOTTOMPADDING", (0,0), (-1,-1), 2.8*mm),
+    table = Table(rows, colWidths=widths, hAlign='LEFT')
+    commands = [
+        ('BOX', (0, 0), (-1, -1), 0.6, RULE),
+        ('INNERGRID', (0, 0), (-1, -1), 0.35, RULE),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('LEFTPADDING', (0, 0), (-1, -1), 3 * mm),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 3 * mm),
+        ('TOPPADDING', (0, 0), (-1, -1), 2.5 * mm),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 2.5 * mm),
     ]
     if label_column:
-        cmds.append(("BACKGROUND", (0,0), (0,-1), PALE))
-    table.setStyle(TableStyle(cmds))
+        commands.append(('BACKGROUND', (0, 0), (0, -1), PALE))
+    table.setStyle(TableStyle(commands))
     return table
 
-def project_card(title, description, url):
-    content = [
-        p(title, "ProjectTitleCV"),
-        p(description, "ProjectTextCV"),
-        p("Código: " + url, "ProjectTextCV"),
-    ]
-    table = Table([[content]], colWidths=[174*mm], hAlign="LEFT")
+
+def project_card(title, description, url, paragraph):
+    content = [paragraph(title, 'ProjectTitleCV'), paragraph(description, 'ProjectTextCV')]
+    if url:
+        content.append(paragraph('Código: ' + url, 'ProjectTextCV'))
+    table = Table([[content]], colWidths=[174 * mm], hAlign='LEFT')
     table.setStyle(TableStyle([
-        ("BACKGROUND", (0,0), (-1,-1), colors.HexColor("#F8FAFC")),
-        ("BOX", (0,0), (-1,-1), 0.6, RULE),
-        ("LINEBEFORE", (0,0), (0,0), 2.2, BLUE),
-        ("LEFTPADDING", (0,0), (-1,-1), 4*mm),
-        ("RIGHTPADDING", (0,0), (-1,-1), 4*mm),
-        ("TOPPADDING", (0,0), (-1,-1), 4*mm),
-        ("BOTTOMPADDING", (0,0), (-1,-1), 3.5*mm),
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#F8FAFC')),
+        ('BOX', (0, 0), (-1, -1), 0.6, RULE),
+        ('LINEBEFORE', (0, 0), (0, 0), 2.2, BLUE),
+        ('LEFTPADDING', (0, 0), (-1, -1), 4 * mm),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 4 * mm),
+        ('TOPPADDING', (0, 0), (-1, -1), 3.5 * mm),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3 * mm),
     ]))
     return table
 
-doc = SimpleDocTemplate(str(OUT), pagesize=A4, leftMargin=18*mm, rightMargin=18*mm,
-                        topMargin=13*mm, bottomMargin=19*mm, title="CV Jose Conca")
-story = []
 
-header_rows = [
-    [p("Jose Conca", "NameCV")],
-    [p("DESARROLLADOR DE SOFTWARE JUNIOR · BACKEND Y FULL STACK", "RoleCV")],
-    [p("Telde, Las Palmas · vl.conca@gmail.com", "ContactCV")],
-    [p("Portafolio: https://joseconca.github.io", "ContactCV")],
-    [p("GitHub: https://github.com/joseconca · LinkedIn: https://linkedin.com/in/joseconca", "ContactCV")],
-]
-header = Table(header_rows, colWidths=[174*mm])
-header.setStyle(TableStyle([
-    ("BACKGROUND", (0,0), (-1,-1), PALE),
-    ("BOX", (0,0), (-1,-1), 0.7, RULE),
-    ("LEFTPADDING", (0,0), (-1,-1), 5*mm),
-    ("RIGHTPADDING", (0,0), (-1,-1), 5*mm),
-    ("TOPPADDING", (0,0), (-1,0), 3.5*mm),
-    ("BOTTOMPADDING", (0,0), (-1,0), 1.2*mm),
-    ("TOPPADDING", (0,1), (-1,-1), 1*mm),
-    ("BOTTOMPADDING", (0,1), (-1,-1), 1*mm),
-    ("BOTTOMPADDING", (0,-1), (-1,-1), 3.5*mm),
-]))
-story += [header, Spacer(1, 4*mm), p("PERFIL PROFESIONAL", "SectionCV")]
-story.append(p("Desarrollador de software con experiencia profesional en Inerza trabajando con C#/.NET, integración de APIs REST, pruebas automatizadas, Git y metodología Scrum. Técnico Superior en Desarrollo de Aplicaciones Web y estudiante de Ingeniería Informática, actualmente con el TFG en desarrollo. Interesado en desarrollar aplicaciones fiables, colaborar en equipos técnicos y aplicar buenas prácticas de programación."))
-story.append(p("EXPERIENCIA PROFESIONAL", "SectionCV"))
-story += [
-    p("Programador · Inerza", "JobCV"),
-    p("Beca Inserta · Fundación Universitaria de Las Palmas | Julio 2025 – Mayo 2026", "MetaCV"),
-]
-for item in [
-    "Desarrollo y mantenimiento de aplicaciones web y de escritorio con C#/.NET.",
-    "Integración con APIs REST y actualización de funcionalidades según las necesidades del proyecto.",
-    "Creación y ejecución de pruebas unitarias y end-to-end para apoyar la calidad del software.",
-    "Trabajo con Git y colaboración en un equipo que utiliza metodología ágil Scrum.",
-]:
-    story.append(p("• " + item, "BulletCV"))
-story += [Spacer(1, 2*mm), p("Analista y desarrollador en prácticas · Inerza", "JobCV"),
-          p("Prácticas de Formación Profesional | Marzo 2025 – Junio 2025", "MetaCV")]
-for item in [
-    "Ajuste de modelos preentrenados con Hugging Face y Unsloth.",
-    "Experimentación iterativa para evaluar el rendimiento de los modelos.",
-    "Creación de imágenes Docker y despliegue de servicios de inferencia en Azure Container Apps.",
-]:
-    story.append(p("• " + item, "BulletCV"))
+def generate():
+    data = load_data()
+    contact = data['datosContacto']
+    pdf_name = contact['curriculumPdf'].removeprefix('/')
+    if not pdf_name.endswith('.pdf') or Path(pdf_name).name != pdf_name:
+        raise ValueError('curriculumPdf debe ser un archivo PDF dentro de public/')
+    output = ROOT / 'public' / pdf_name
+    output.parent.mkdir(parents=True, exist_ok=True)
 
-story.append(p("COMPETENCIAS TÉCNICAS", "SectionCV"))
-skills = [
-    [p("Lenguajes", "LabelCV"), p("C#, Python, Java, TypeScript, JavaScript, SQL", "TextCV")],
-    [p("Backend y APIs", "LabelCV"), p(".NET / ASP.NET, FastAPI, Spring Boot, APIs REST", "TextCV")],
-    [p("Bases de datos", "LabelCV"), p("PostgreSQL, MySQL, SQLite, Prisma, SQLAlchemy", "TextCV")],
-    [p("Calidad", "LabelCV"), p("Git, pruebas unitarias y end-to-end, Postman, Cypress", "TextCV")],
-    [p("Cloud e IA", "LabelCV"), p("Docker, Azure Container Apps, Hugging Face, Unsloth; GitHub Copilot, Continue y Ollama como apoyo al desarrollo", "TextCV")],
-    [p("Frontend", "LabelCV"), p("Next.js, React, HTML5, CSS3, Tailwind CSS", "TextCV")],
-]
-story += [info_table(skills, [35*mm, 139*mm], label_column=True), PageBreak()]
+    s = styles()
 
-story.append(p("PROYECTOS SELECCIONADOS", "SectionCV"))
-story += [
-    project_card("Find My Pet · API y aplicación web",
-                 "Aplicación para gestionar mascotas perdidas y avistamientos geolocalizados. Backend con Python, FastAPI y SQLAlchemy; SQLite y Google Maps API.",
-                 "https://github.com/joseconca/proyecto-final-DAW"),
-    Spacer(1, 4*mm),
-    project_card("Timeline: historia de la informática · Aplicación full stack",
-                 "Juego web para ordenar cronológicamente eventos. Desarrollado con Next.js, React, TypeScript, PostgreSQL y Prisma, con lógica de juego y gestión de eventos.",
-                 "https://github.com/joseconca/proyecto-timeline"),
-    Spacer(1, 3*mm),
-    project_card("Gremio Expediciones · RPG web en desarrollo",
-                 "Proyecto de rol web con personajes, inventario, misiones y combates por turnos. Usa Next.js, TypeScript, PostgreSQL, Prisma y Zustand; incluye pruebas automatizadas para partes de la lógica de negocio y las API.",
-                 "https://github.com/joseconca/gremio-expediciones"),
-    p("FORMACIÓN ACADÉMICA", "SectionCV"),
-]
-education = [
-    [p("Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web", "JobCV"),
-     p("IES El Rincón · Finalizado en 2025", "MetaCV")],
-    [p("Grado en Ingeniería Informática · Especialidad en Tecnologías de la Información", "JobCV"),
-     p("Universidad Politécnica de Valencia · En curso; TFG en desarrollo", "MetaCV")],
-]
-edu_table = Table([[education[0]], [education[1]]], colWidths=[174*mm], hAlign="LEFT")
-edu_table.setStyle(TableStyle([
-    ("BACKGROUND", (0,0), (-1,-1), PALE),
-    ("BOX", (0,0), (-1,-1), 0.6, RULE),
-    ("INNERGRID", (0,0), (-1,-1), 0.35, RULE),
-    ("LEFTPADDING", (0,0), (-1,-1), 3.5*mm),
-    ("RIGHTPADDING", (0,0), (-1,-1), 3.5*mm),
-    ("TOPPADDING", (0,0), (-1,-1), 3*mm),
-    ("BOTTOMPADDING", (0,0), (-1,-1), 2*mm),
-    ("VALIGN", (0,0), (-1,-1), "TOP"),
-]))
-story += [edu_table, p("OTROS DATOS", "SectionCV")]
-other = [
-    [p("Idiomas", "LabelCV"), p("Español y valenciano nativos. Inglés avanzado en lectura y escritura; nivel intermedio oral.", "TextCV")],
-    [p("Discapacidad", "LabelCV"), p("Discapacidad reconocida del 39%.", "TextCV")],
-]
-story += [info_table(other, [35*mm, 139*mm], label_column=True), Spacer(1, 4*mm),
-          HRFlowable(width="100%", thickness=0.6, color=RULE), Spacer(1, 2*mm),
-          p("Portafolio: https://joseconca.github.io · GitHub: https://github.com/joseconca", "FooterCV")]
+    def p(value, style='BodyCV'):
+        return Paragraph(escape(str(value)), s[style])
 
-doc.build(story, onFirstPage=footer, onLaterPages=footer)
+    def footer(canvas, doc):
+        canvas.saveState()
+        canvas.setStrokeColor(RULE)
+        canvas.setLineWidth(0.6)
+        canvas.line(18 * mm, 14 * mm, A4[0] - 18 * mm, 14 * mm)
+        canvas.setFont('Helvetica', 7.5)
+        canvas.setFillColor(MUTED)
+        canvas.drawString(18 * mm, 9 * mm, contact['nombre'] + ' · Desarrollo de software')
+        canvas.drawRightString(A4[0] - 18 * mm, 9 * mm, str(doc.page))
+        canvas.restoreState()
+
+    doc = SimpleDocTemplate(
+        str(output), pagesize=A4,
+        leftMargin=18 * mm, rightMargin=18 * mm,
+        topMargin=13 * mm, bottomMargin=19 * mm,
+        title='CV ' + contact['nombre'],
+    )
+    story = []
+    header_rows = [
+        [p(contact['nombre'], 'NameCV')],
+        [p(contact['rol'].upper(), 'RoleCV')],
+        [p(contact['localizacion'] + ' · ' + contact['email'], 'ContactCV')],
+        [p('Portafolio: ' + contact['webCv'], 'ContactCV')],
+        [p('GitHub: ' + contact['github'] + ' · LinkedIn: ' + contact['linkedin'], 'ContactCV')],
+    ]
+    header = Table(header_rows, colWidths=[174 * mm])
+    header.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), PALE),
+        ('BOX', (0, 0), (-1, -1), 0.7, RULE),
+        ('LEFTPADDING', (0, 0), (-1, -1), 5 * mm),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 5 * mm),
+        ('TOPPADDING', (0, 0), (-1, 0), 3.5 * mm),
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 1.2 * mm),
+        ('TOPPADDING', (0, 1), (-1, -1), 1 * mm),
+        ('BOTTOMPADDING', (0, -1), (-1, -1), 3.5 * mm),
+    ]))
+    story.extend([header, Spacer(1, 4 * mm), p('PERFIL PROFESIONAL', 'SectionCV'),
+                  p(contact['perfilProfesional'])])
+
+    if data['experienciaProfesional']:
+        story.append(p('EXPERIENCIA PROFESIONAL', 'SectionCV'))
+        for job in data['experienciaProfesional']:
+            story.extend([
+                p(job['rol'] + ' · ' + job['empresa'], 'JobCV'),
+                p(job['contexto'] + ' | ' + job['fechaInicio'] + ' – ' + job['fechaFin'], 'MetaCV'),
+            ])
+            for tarea in job['tareas']:
+                for detail in tarea['detalles']:
+                    story.append(p('• ' + detail, 'BulletCV'))
+            story.append(Spacer(1, 2 * mm))
+
+    if data['skillStack']:
+        story.append(p('COMPETENCIAS TÉCNICAS', 'SectionCV'))
+        skills = [
+            [p(category, 'LabelCV'), p(', '.join(values['tecnologias']), 'TextCV')]
+            for category, values in data['skillStack'].items()
+        ]
+        story.append(info_table(skills, [53 * mm, 121 * mm], label_column=True))
+
+    story.append(PageBreak())
+    highlighted_projects = [project for project in data['proyectos'] if project.get('tecnologias')][:3]
+    if highlighted_projects:
+        story.append(p('PROYECTOS SELECCIONADOS', 'SectionCV'))
+        for project in highlighted_projects:
+            story.extend([
+                project_card(project['titulo'], project['descripcion'], project.get('url', ''), p),
+                Spacer(1, 3.5 * mm),
+            ])
+
+    if data['formacionAcademica']:
+        story.append(p('FORMACIÓN ACADÉMICA', 'SectionCV'))
+        education = []
+        for item in data['formacionAcademica']:
+            entries = [
+                p(item['titulacion'], 'JobCV'),
+                p(item['institucion'] + ' · ' + item['periodo'], 'MetaCV'),
+            ]
+            entries.extend(p(detail, 'TextCV') for detail in item.get('detalles', []))
+            education.append([entries])
+        story.append(info_table(education, [174 * mm]))
+
+    if contact.get('otrosDatos'):
+        story.append(p('OTROS DATOS', 'SectionCV'))
+        rows = [[p(entry['etiqueta'], 'LabelCV'), p(entry['valor'], 'TextCV')]
+                for entry in contact['otrosDatos']]
+        story.append(info_table(rows, [35 * mm, 139 * mm], label_column=True))
+
+    story.extend([
+        Spacer(1, 4 * mm),
+        HRFlowable(width='100%', thickness=0.6, color=RULE),
+        Spacer(1, 2 * mm),
+        p('Portafolio: ' + contact['webCv'] + ' · GitHub: ' + contact['github'], 'FooterCV'),
+    ])
+    doc.build(story, onFirstPage=footer, onLaterPages=footer)
+    print('CV generado: ' + str(output))
+
+
+if __name__ == '__main__':
+    generate()
