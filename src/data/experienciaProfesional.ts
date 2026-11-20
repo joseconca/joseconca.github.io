@@ -14,7 +14,7 @@ export const experienciaProfesional = [
           "Desarrollo de una aplicación web y de escritorio en C#.",
           "Integración con una API REST y aplicación de actualizaciones diarias según las necesidades del cliente.",
           "Trabajo con metodología ágil Scrum.",
-          "Creación de pruebas unitarias y end-to-end, y uso de Git."
+          "Creación de pruebas unitarias, de integración y de extremo a extremo, y uso de Git."
         ]
       }
     ]

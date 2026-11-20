@@ -14,7 +14,7 @@ export const experienciaProfesional = [
           "Developed a web and desktop application using C#.",
           "Integrated a REST API and implemented daily updates in response to client requirements.",
           "Worked in a team following the Scrum agile methodology.",
-          "Created unit and end-to-end tests and used Git for version control."
+          "Created unit, integration and end-to-end tests, and used Git for version control."
         ]
       }
     ]
