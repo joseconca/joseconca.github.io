@@ -1,13 +1,13 @@
 export const datosContacto = {
   nombre: "Jose Conca",
-  rol: "Desarrollador de software · Backend y Full Stack",
+  rol: "Desarrollador de software · Backend, frontend y proyectos interactivos",
   email: "vl.conca@gmail.com",
   localizacion: "Telde, Las Palmas",
   webCv: "https://joseconca.github.io",
   github: "https://github.com/joseconca",
   linkedin: "https://linkedin.com/in/joseconca",
   perfilProfesional:
-    "Desarrollador de software con experiencia profesional en C# y .NET, desarrollo e integración de APIs REST, pruebas automatizadas y colaboración en equipos ágiles. Técnico Superior en Desarrollo de Aplicaciones Web y estudiante de Ingeniería Informática, actualmente finalizando el TFG. Me interesa construir aplicaciones fiables, mantenibles y bien diseñadas.",
+    "Desarrollador de software con experiencia profesional en evolución de aplicaciones, desarrollo de funcionalidades, integración de APIs y pruebas automatizadas en equipos ágiles. Técnico Superior en Desarrollo de Aplicaciones Web y estudiante de Ingeniería Informática, actualmente finalizando el TFG. Me apasionan la programación orientada a objetos, el diseño de software y las buenas prácticas.",
   otrosDatos: [
     {
       etiqueta: "Idiomas",
