@@ -6,6 +6,7 @@ export const proyectos = [
     descripcion:
       "Web application for reporting lost pets and sightings. The backend uses FastAPI and SQLAlchemy, with SQLite for persistence. Users can manage accounts and pets, sign in, and report or browse geolocated sightings displayed on Google Maps.",
     url: "https://github.com/joseconca/proyecto-final-DAW",
+    urlDirecto: "https://github.com/user-attachments/assets/34a21b34-e5cd-4cc4-8b3a-bdea9dda0d0d",
   },
   {
     id: "TFG-historical-events-nextjs",
