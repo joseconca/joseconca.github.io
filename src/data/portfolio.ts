@@ -19,6 +19,10 @@ export type Proyecto = {
   tipo?: "aplicacion" | "juego";
   estado?: string;
   demoTipo?: "video";
+  imagen?: string;
+  imagenLogo?: string;
+  imagenAlt?: string;
+  urlSitio?: string;
   url?: string;
   urlDirecto?: string;
 };
