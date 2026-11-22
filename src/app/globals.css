@@ -243,6 +243,27 @@ button:focus-visible {
   font-weight: 650;
 }
 
+/* Resumen de fortalezas para una lectura rápida del perfil. */
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1.25rem;
+}
+
+.hero-highlight {
+  display: inline-flex;
+  align-items: center;
+  padding: .45rem .7rem;
+  border: 1px solid rgba(147, 197, 253, .22);
+  border-radius: 999px;
+  background: rgba(59, 130, 246, .08);
+  color: #d3e5fb;
+  font-size: .78rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -385,6 +406,26 @@ button:focus-visible {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+}
+
+/* La portada muestra cuatro áreas principales en dos columnas. */
+.skills-grid-featured {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.skills-more {
+  margin: 1.1rem 0 0;
+  font-size: .88rem;
+}
+
+.skills-more a {
+  color: var(--accent);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.skills-more a:hover {
+  text-decoration: underline;
 }
 
 .skill-card,
