@@ -6,6 +6,7 @@ export const proyectos = [
     descripcion:
       "Aplicación web para registrar mascotas perdidas y sus avistamientos. El backend está desarrollado con FastAPI y SQLAlchemy, con persistencia en SQLite. Permite gestionar usuarios y mascotas, iniciar sesión y registrar y consultar avistamientos geolocalizados que se muestran en un mapa de Google Maps.",
     url: "https://github.com/joseconca/proyecto-final-DAW",
+    urlDirecto: "https://github.com/user-attachments/assets/34a21b34-e5cd-4cc4-8b3a-bdea9dda0d0d",
   },
   {
     id: "TFG-historical-events-nextjs",

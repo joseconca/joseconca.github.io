@@ -6,6 +6,9 @@ import { textos, type Idioma } from "@/data/textos";
 export default function HomeContent({ idioma }: { idioma: Idioma }) {
   const { datosContacto, skillStack, proyectos } = getPortfolio(idioma);
   const t = textos[idioma].inicio;
+  const categoriasPrincipales = idioma === "es"
+    ? ["Backend y APIs", "Frontend para desarrollo full stack", "Bases de datos y persistencia", "Calidad, herramientas y despliegue"]
+    : ["Backend and APIs", "Frontend for full-stack development", "Databases and persistence", "Quality, tools and deployment"];
 
   return (
     <div className="page-stack">
@@ -15,13 +18,18 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
           <h1 className="hero-title">{datosContacto.nombre}</h1>
           <p className="hero-role">{datosContacto.rol}</p>
           <p className="hero-description">{datosContacto.perfilProfesional}</p>
+          <div className="hero-highlights" aria-label={t.puntosFuertesLabel}>
+            {t.puntosFuertes.map((punto) => (
+              <span key={punto} className="hero-highlight">{punto}</span>
+            ))}
+          </div>
           <div className="hero-actions">
-            <Link href={rutaIdioma(idioma, "/proyectos")} className="button-primary">
-              {t.explorarProyectos} <span aria-hidden="true">↗</span>
-            </Link>
-            <a href={datosContacto.curriculumPdf} download className="button-secondary">
+            <a href={datosContacto.curriculumPdf} download className="button-primary">
               {textos[idioma].navegacion.descargaCv} <span aria-hidden="true">↓</span>
             </a>
+            <Link href={rutaIdioma(idioma, "/proyectos")} className="button-secondary">
+              {t.explorarProyectos} <span aria-hidden="true">↗</span>
+            </Link>
           </div>
           <div className="contact-strip">
             <span>{datosContacto.localizacion}</span>
@@ -36,7 +44,7 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
           </div>
           <div className="hero-status">
             <span className="status-dot" aria-hidden="true" />
-            <span>Backend · Full Stack · Software</span>
+            <span>{t.disponibilidad}</span>
           </div>
         </div>
       </section>
@@ -49,19 +57,27 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
             <p className="section-description">{t.stackDescripcion}</p>
           </div>
         </div>
-        <div className="skills-grid">
-          {Object.entries(skillStack).map(([categoria, datos]) => (
-            <article key={categoria} className="skill-card">
-              <h3>{categoria}</h3>
-              <p>{datos.descripcion}</p>
-              <div className="tech-list">
-                {datos.tecnologias.map((tecnologia) => (
-                  <span key={tecnologia} className="tech-pill">{tecnologia}</span>
-                ))}
-              </div>
-            </article>
-          ))}
+        <div className="skills-grid skills-grid-featured">
+          {categoriasPrincipales.map((categoria) => {
+            const datos = skillStack[categoria];
+            return datos ? (
+              <article key={categoria} className="skill-card">
+                <h3>{categoria}</h3>
+                <p>{datos.descripcion}</p>
+                <div className="tech-list">
+                  {datos.tecnologias.map((tecnologia) => (
+                    <span key={tecnologia} className="tech-pill">{tecnologia}</span>
+                  ))}
+                </div>
+              </article>
+            ) : null;
+          })}
         </div>
+        <p className="skills-more">
+          <a href={datosContacto.curriculumPdf} download>
+            {t.competenciasCompletas} <span aria-hidden="true">↓</span>
+          </a>
+        </p>
       </section>
 
       <section>
