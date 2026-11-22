@@ -11,11 +11,14 @@ type Props = {
 export default function ProjectCard({ proyecto, index, idioma, destacado = false }: Props) {
   const t = textos[idioma].inicio;
   return (
-    <article className="project-card">
+    <article className={`project-card${proyecto.tipo === "juego" ? " project-card-game" : ""}`}>
       <div>
-        <span className="project-index">
-          {t.etiquetaProyecto} / {String(index + 1).padStart(2, "0")}
-        </span>
+        <div className="project-heading">
+          <span className="project-index">
+            {t.etiquetaProyecto} / {String(index + 1).padStart(2, "0")}
+          </span>
+          {proyecto.categoria ? <span className="project-category">{proyecto.categoria}</span> : null}
+        </div>
         {destacado ? <h3>{proyecto.titulo}</h3> : <h2>{proyecto.titulo}</h2>}
         <p>{proyecto.descripcion}</p>
       </div>
@@ -35,9 +38,10 @@ export default function ProjectCard({ proyecto, index, idioma, destacado = false
           ) : null}
           {proyecto.urlDirecto ? (
             <a href={proyecto.urlDirecto} target="_blank" rel="noreferrer" className="project-link">
-              {t.verDemo} <span aria-hidden="true">↗</span>
+              {proyecto.demoTipo === "video" ? t.verVideo : t.verDemo} <span aria-hidden="true">↗</span>
             </a>
           ) : null}
+          {proyecto.estado ? <span className="project-state">{proyecto.estado}</span> : null}
         </div>
       </div>
     </article>
