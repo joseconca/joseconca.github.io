@@ -49,7 +49,7 @@ export const textos = {
     },
     proyectos: {
       etiqueta: "Selección de trabajo", titulo: "Proyectos",
-      descripcion: "Aplicaciones web, APIs y proyectos personales donde exploro arquitectura, persistencia de datos, lógica de negocio y experiencia de usuario. Cada ficha enlaza al código fuente o a una demo cuando está disponible.",
+      descripcion: "Aplicaciones web, herramientas y videojuegos desarrollados para explorar diseño de sistemas, lógica de negocio y experiencia de usuario. Cada proyecto incluye código o una demo cuando están disponibles.",
       filtrar: "Filtrar proyectos por tecnología", todos: "Todos",
       listado: "Listado de proyectos"
     },
@@ -59,7 +59,7 @@ export const textos = {
       formacionEtiqueta: "Formación", formacionTitulo: "Formación académica",
       formacionDescripcion: "Estudios centrados en el desarrollo de aplicaciones y los fundamentos de la ingeniería informática."
     },
-    pie: {descripcion: "Desarrollo de software · Backend · Full Stack"},
+    pie: {descripcion: "Desarrollo de software · Calidad · Proyectos interactivos"},
     cv: {
       perfil: "SOBRE MÍ", otros: "OTROS DATOS",
       experiencia: "EXPERIENCIA PROFESIONAL", formacion: "FORMACIÓN ACADÉMICA",
@@ -110,7 +110,7 @@ export const textos = {
     },
     proyectos: {
       etiqueta: "Selected work", titulo: "Projects",
-      descripcion: "Web applications, APIs and personal projects exploring software architecture, data persistence, business logic and user experience. Each project links to its source code and, where available, a demo.",
+      descripcion: "Web applications, tools and games exploring system design, business logic and user experience. Each project links to its source code or a demo when available.",
       filtrar: "Filter projects by technology", todos: "All",
       listado: "Project listing"
     },
@@ -120,7 +120,7 @@ export const textos = {
       formacionEtiqueta: "Education", formacionTitulo: "Education",
       formacionDescripcion: "Studies in application development and the fundamentals of computer engineering."
     },
-    pie: {descripcion: "Software development · Backend · Full Stack"},
+    pie: {descripcion: "Software development · Quality · Interactive projects"},
     cv: {
       perfil: "ABOUT ME", otros: "ADDITIONAL INFORMATION",
       experiencia: "PROFESSIONAL EXPERIENCE", formacion: "EDUCATION",
