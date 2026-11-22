@@ -1,6 +1,9 @@
 export const proyectos = [
   {
     id: "trabajoCiclo-fastAPI-find-my-pet",
+    categoria: "Web application",
+    tipo: "aplicacion" as const,
+    demoTipo: "video" as const,
     titulo: "Find My Pet",
     tecnologias: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "Google Maps API"],
     descripcion:
@@ -10,14 +13,18 @@ export const proyectos = [
   },
   {
     id: "TFG-historical-events-nextjs",
+    categoria: "Educational game",
+    tipo: "juego" as const,
+    estado: "Private source code (degree project in progress)",
     titulo: "Timeline: A History of Computing",
     tecnologias: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma ORM", "dnd-kit"],
     descripcion:
       "Educational web game where players arrange computing history events chronologically using drag and drop. Events and games are stored in PostgreSQL via Prisma; the game validates placements and calculates scores based on accuracy, mistakes and time. Includes a protected administration area for managing events.",
-    url: "https://github.com/joseconca/proyecto-timeline",
   },
   {
     id: "gremio-expediciones-nextjs",
+    categoria: "Browser RPG",
+    tipo: "juego" as const,
     titulo: "Expedition Guild",
     tecnologias: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Zustand", "Leaflet"],
     descripcion:
@@ -26,6 +33,8 @@ export const proyectos = [
   },
   {
     id: "HTML-canvas-pokemon-spaceinvaders",
+    categoria: "Arcade game",
+    tipo: "juego" as const,
     titulo: "Run, Pikachu, Run!",
     tecnologias: ["HTML5 Canvas", "CSS", "JavaScript (ES modules)"],
     descripcion:
@@ -35,6 +44,8 @@ export const proyectos = [
   },
   {
     id: "joseconca-github-pages",
+    categoria: "Portfolio",
+    tipo: "aplicacion" as const,
     titulo: "This professional portfolio",
     tecnologias: ["Next.js", "React", "TypeScript", "Tailwind CSS", "GitHub Actions"],
     descripcion:
@@ -44,6 +55,7 @@ export const proyectos = [
   },
   {
     id: "Otros-proyectos",
+    categoria: "More repositories",
     titulo: "Other projects",
     descripcion:
       "More programming projects and exercises are available on my public GitHub profile.",

@@ -1,6 +1,9 @@
 export const proyectos = [
   {
     id: "trabajoCiclo-fastAPI-find-my-pet",
+    categoria: "Aplicación web",
+    tipo: "aplicacion" as const,
+    demoTipo: "video" as const,
     titulo: "Find My Pet",
     tecnologias: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "Google Maps API"],
     descripcion:
@@ -10,14 +13,18 @@ export const proyectos = [
   },
   {
     id: "TFG-historical-events-nextjs",
+    categoria: "Juego educativo",
+    tipo: "juego" as const,
+    estado: "Código privado (TFG en curso)",
     titulo: "Timeline: historia de la informática",
     tecnologias: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma ORM", "dnd-kit"],
     descripcion:
       "Juego web tipo Timeline en el que hay que colocar eventos de la historia de la informática en orden cronológico mediante drag and drop. Persiste los eventos y las partidas en PostgreSQL con Prisma, valida las colocaciones y registra puntuaciones según el resultado, los errores y el tiempo. Incluye una sección de administración protegida para crear, editar y eliminar eventos.",
-    url: "https://github.com/joseconca/proyecto-timeline",
   },
   {
     id: "gremio-expediciones-nextjs",
+    categoria: "RPG web",
+    tipo: "juego" as const,
     titulo: "Gremio Expediciones",
     tecnologias: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Zustand", "Leaflet"],
     descripcion:
@@ -26,6 +33,8 @@ export const proyectos = [
   },
   {
     id: "HTML-canvas-pokemon-spaceinvaders",
+    categoria: "Juego arcade",
+    tipo: "juego" as const,
     titulo: "¡Corre, Pikachu, corre!",
     tecnologias: ["HTML5 Canvas", "CSS", "JavaScript (módulos ES)"],
     descripcion:
@@ -35,6 +44,8 @@ export const proyectos = [
   },
   {
     id: "joseconca-github-pages",
+    categoria: "Portfolio",
+    tipo: "aplicacion" as const,
     titulo: "Este portafolio profesional",
     tecnologias: ["Next.js", "React", "TypeScript", "Tailwind CSS", "GitHub Actions"],
     descripcion:
@@ -44,6 +55,7 @@ export const proyectos = [
   },
   {
     id: "Otros-proyectos",
+    categoria: "Más repositorios",
     titulo: "Otros proyectos",
     descripcion:
       "Más proyectos y ejercicios de programación disponibles en mi perfil público de GitHub.",
