@@ -8,9 +8,9 @@ export type Idioma = "es" | "en";
 export const textos = {
   es: {
     meta: {
-      titulo: "Jose Conca | Desarrollador Backend y Full Stack Junior",
-      descripcion: "Portafolio de Jose Conca, desarrollador de software junior: experiencia, tecnologías y proyectos de backend y full stack.",
-      ogTitulo: "Jose Conca | Desarrollador de software junior"
+      titulo: "Jose Conca | Desarrollador de software",
+      descripcion: "Portfolio de Jose Conca: experiencia en desarrollo de software, proyectos web e interactivos, tecnología y buenas prácticas.",
+      ogTitulo: "Jose Conca | Desarrollador de software"
     },
     navegacion: {
       inicio: "Inicio", proyectos: "Proyectos", trayectoria: "Trayectoria",
@@ -18,25 +18,31 @@ export const textos = {
       inicioAccesible: "Jose Conca, inicio"
     },
     inicio: {
-      etiqueta: "Portafolio profesional · 2026",
+      etiqueta: "Portfolio de desarrollo de software",
       explorarProyectos: "Ver proyectos",
       disponibilidad: "Disponible para oportunidades de desarrollo en remoto desde Gran Canaria",
       puntosFuertesLabel: "Especialidades",
-      puntosFuertes: ["Experiencia en .NET y APIs REST", "Pruebas automatizadas", "Proyectos fullstack"],
+      puntosFuertes: ["Desarrollo de aplicaciones", "Testing y buenas prácticas", "Proyectos propios"],
       competenciasCompletas: "Consultar todas las competencias en el CV",
       retratoAlt: "Retrato de",
       stackEtiqueta: "Stack técnico",
       stackTitulo: "Tecnologías y competencias",
-      stackDescripcion: "Una base orientada al desarrollo de software, desde la lógica de negocio y los datos hasta la interfaz y el despliegue.",
+      stackDescripcion: "Lenguajes y herramientas que utilizo para crear aplicaciones, resolver problemas y cuidar la calidad del código.",
       proyectosEtiqueta: "Trabajo seleccionado",
       proyectosTitulo: "Proyectos destacados",
-      proyectosDescripcion: "Proyectos reales y personales que muestran cómo abordo la lógica de negocio, la persistencia de datos y la experiencia de usuario.",
+      proyectosDescripcion: "Aplicaciones útiles, experiencias interactivas y videojuegos donde exploro arquitectura, interfaces y lógica de negocio.",
       todosLosProyectos: "Ver todos los proyectos",
       contactoEtiqueta: "Contacto",
       contactoTitulo: "¿Hablamos de software?",
-      contactoDescripcion: "Estoy interesado en oportunidades junior de desarrollo backend o full stack. Si buscas a alguien con ganas de construir, aprender y cuidar la calidad del código, estaré encantado de conversar.",
+      contactoDescripcion: "Busco oportunidades de desarrollo de software, preferiblemente en remoto. Me interesa colaborar en proyectos donde pueda aportar, seguir aprendiendo y cuidar la calidad del código.",
       contactar: "Contactar por correo",
       verTrayectoria: "Ver trayectoria",
+      interesEtiqueta: "Fuera del trabajo",
+      interesTitulo: "Los videojuegos también inspiran mi código",
+      interesDescripcion: "Disfruto los videojuegos y me interesa comprender cómo están construidos. Por eso también desarrollo proyectos interactivos: desde un RPG web con sistemas de progresión y combate hasta un juego educativo sobre historia de la informática.",
+      interesAccion: "Explorar proyectos interactivos",
+      verVideo: "Ver vídeo",
+      proyectoPrivado: "Código privado (TFG en curso)",
       etiquetaProyecto: "PROYECTO",
       codigoFuente: "Código fuente",
       verDemo: "Ver demo"
@@ -63,9 +69,9 @@ export const textos = {
   },
   en: {
     meta: {
-      titulo: "Jose Conca | Junior Backend & Full-Stack Developer",
-      descripcion: "Jose Conca's portfolio: software development experience, technical skills and backend and full-stack projects.",
-      ogTitulo: "Jose Conca | Junior Software Developer"
+      titulo: "Jose Conca | Software Developer",
+      descripcion: "Jose Conca's portfolio: professional software development experience, web and interactive projects, technologies and best practices.",
+      ogTitulo: "Jose Conca | Software Developer"
     },
     navegacion: {
       inicio: "Home", proyectos: "Projects", trayectoria: "Experience",
@@ -73,25 +79,31 @@ export const textos = {
       inicioAccesible: "Jose Conca, home"
     },
     inicio: {
-      etiqueta: "Professional portfolio · 2026",
+      etiqueta: "Software development portfolio",
       explorarProyectos: "View projects",
       disponibilidad: "Available for remote software development roles from the Canary Islands",
       puntosFuertesLabel: "Key strengths",
-      puntosFuertes: [".NET and REST API experience", "Automated testing", "Full-stack projects"],
+      puntosFuertes: ["Application development", "Testing and clean code", "Personal projects"],
       competenciasCompletas: "See the complete skill set in my CV",
       retratoAlt: "Portrait of",
       stackEtiqueta: "Technical stack",
       stackTitulo: "Technologies and skills",
-      stackDescripcion: "A software development skill set covering business logic and data, user interfaces and deployment.",
+      stackDescripcion: "Languages and tools I use to build applications, solve problems and keep code reliable and maintainable.",
       proyectosEtiqueta: "Selected work",
       proyectosTitulo: "Featured projects",
-      proyectosDescripcion: "Professional and personal projects highlighting my approach to business logic, data persistence and user experience.",
+      proyectosDescripcion: "Useful applications, interactive experiences and games exploring architecture, interfaces and business logic.",
       todosLosProyectos: "View all projects",
       contactoEtiqueta: "Contact",
       contactoTitulo: "Let's talk software",
-      contactoDescripcion: "I'm looking for junior backend or full-stack development opportunities. If you value building, learning and writing maintainable code, I'd be glad to connect.",
+      contactoDescripcion: "I am looking for software development opportunities, preferably remote. I enjoy contributing to projects, learning new things and delivering maintainable code.",
       contactar: "Send an email",
       verTrayectoria: "View experience",
+      interesEtiqueta: "Beyond work",
+      interesTitulo: "Games inspire the software I build",
+      interesDescripcion: "I enjoy playing games and understanding how they work. That curiosity also drives my interactive projects, from a browser RPG with character progression and turn-based combat to an educational game about computing history.",
+      interesAccion: "Explore interactive projects",
+      verVideo: "Watch video",
+      proyectoPrivado: "Private source code (degree project in progress)",
       etiquetaProyecto: "PROJECT",
       codigoFuente: "Source code",
       verDemo: "Live demo"
