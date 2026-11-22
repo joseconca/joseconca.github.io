@@ -11,7 +11,7 @@ export const proyectos = [
     imagen: "/projects/blade-meridian-banner.png",
     imagenLogo: "/projects/blade-meridian-icon.png",
     imagenAlt: "Paisaje del videojuego Blade Meridian",
-    urlSitio: "https://blademeridian.freemyip.com:3000/",
+    urlSitio: "https://joseconca.github.io/blade-meridian/",
   },
   {
     id: "trabajoCiclo-fastAPI-find-my-pet",
