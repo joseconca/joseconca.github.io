@@ -95,26 +95,6 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
         </div>
       </section>
 
-      <section className="interests-panel" aria-labelledby="interests-title">
-        <div className="interests-emblem" aria-hidden="true">
-          <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M26 35h44c8 0 13 5 16 14l5 16c2 8-5 15-13 12l-14-10H32L18 77C10 80 3 73 5 65l5-16c3-9 8-14 16-14Z" />
-            <path d="M27 48v17M19 56.5h16" />
-            <circle cx="65" cy="50" r="3" fill="currentColor" stroke="none" />
-            <circle cx="74" cy="59" r="3" fill="currentColor" stroke="none" />
-            <path d="m35 24 7-10 7 10M61 18h17" opacity=".65"/>
-          </svg>
-        </div>
-        <div className="interests-copy">
-          <span className="eyebrow">{t.interesEtiqueta}</span>
-          <h2 id="interests-title" className="interests-title">{t.interesTitulo}</h2>
-          <p>{t.interesDescripcion}</p>
-        </div>
-        <Link href={rutaIdioma(idioma, "/proyectos")} className="interests-link">
-          {t.interesAccion} <span aria-hidden="true">↗</span>
-        </Link>
-      </section>
-
       <section className="contact-panel">
         <span className="eyebrow">{t.contactoEtiqueta}</span>
         <h2>{t.contactoTitulo}</h2>
