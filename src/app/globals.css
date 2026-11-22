@@ -375,33 +375,6 @@ button:focus-visible {
   filter: saturate(.92);
 }
 
-.hero-status {
-  position: relative;
-  right: auto;
-  bottom: auto;
-  display: flex;
-  align-items: center;
-  gap: .55rem;
-  width: fit-content;
-  max-width: 100%;
-  margin: .85rem auto 0;
-  padding: .65rem .8rem;
-  border: 1px solid rgba(148, 163, 184, .2);
-  border-radius: 10px;
-  background: rgba(12, 21, 37, .94);
-  color: #d8e4f2;
-  font-size: .78rem;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, .3);
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 0 4px rgba(52, 211, 153, .12);
-}
-
 .contact-strip {
   display: flex;
   flex-wrap: wrap;
@@ -418,6 +391,11 @@ button:focus-visible {
 
 .contact-strip a:hover {
   color: var(--accent);
+}
+
+.contact-availability {
+  color: #d4c6f3;
+  font-weight: 600;
 }
 
 .section-heading {
@@ -536,6 +514,40 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   padding: clamp(1.25rem, 3vw, 1.8rem);
+}
+
+.projects-grid-featured {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.project-media {
+  position: relative;
+  height: clamp(150px, 15vw, 190px);
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  border: 1px solid rgba(167, 139, 250, .2);
+  border-radius: 12px;
+  background: #121b2e;
+}
+
+.project-media-background {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.85) brightness(.7);
+}
+
+.project-media-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, .65));
 }
 
 .project-card-game {
@@ -941,11 +953,6 @@ button:focus-visible {
     aspect-ratio: 1;
   }
 
-  .hero-status {
-    justify-content: center;
-    margin-top: .75rem;
-  }
-
   .skills-grid,
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1005,11 +1012,6 @@ button:focus-visible {
 
   .hero-aside {
     width: min(58%, 190px);
-  }
-
-  .hero-status {
-    font-size: .72rem;
-    padding: .6rem .65rem;
   }
 
   .contact-strip {
