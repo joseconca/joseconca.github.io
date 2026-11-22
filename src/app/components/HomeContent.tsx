@@ -33,6 +33,7 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
           </div>
           <div className="contact-strip">
             <span>{datosContacto.localizacion}</span>
+            <span className="contact-availability">{t.disponibilidad}</span>
             <a href={`mailto:${datosContacto.email}`}>{datosContacto.email}</a>
             <a href={datosContacto.github} target="_blank" rel="noreferrer">GitHub ↗</a>
             <a href={datosContacto.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
@@ -41,10 +42,6 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
         <div className="hero-aside">
           <div className="hero-avatar-frame">
             <img src="/avatar.jpg" alt={`${t.retratoAlt} ${datosContacto.nombre}`} className="hero-avatar" />
-          </div>
-          <div className="hero-status">
-            <span className="status-dot" aria-hidden="true" />
-            <span>{t.disponibilidad}</span>
           </div>
         </div>
       </section>
@@ -91,8 +88,8 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
             {t.todosLosProyectos} <span aria-hidden="true">→</span>
           </Link>
         </div>
-        <div className="projects-grid">
-          {proyectos.filter((proyecto) => proyecto.tecnologias?.length).slice(0, 3).map((proyecto, index) => (
+        <div className="projects-grid projects-grid-featured">
+          {proyectos.filter((proyecto) => proyecto.tecnologias?.length).slice(0, 4).map((proyecto, index) => (
             <ProjectCard key={proyecto.id} proyecto={proyecto} index={index} idioma={idioma} destacado />
           ))}
         </div>

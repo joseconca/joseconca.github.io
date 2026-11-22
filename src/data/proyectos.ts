@@ -1,5 +1,19 @@
 export const proyectos = [
   {
+    id: "blade-meridian-android",
+    titulo: "Blade Meridian",
+    categoria: "RPG para Android",
+    tipo: "juego" as const,
+    estado: "En desarrollo",
+    tecnologias: ["Java", "Android", "Spring Boot", "PostgreSQL", "MapLibre", "APIs REST"],
+    descripcion:
+      "RPG geolocalizado para Android con exploración sobre un mapa, combates por turnos, clases definidas por el equipamiento y juego individual o cooperativo. Cuenta con cliente Android, lógica de juego independiente y servidor Spring Boot con PostgreSQL.",
+    imagen: "/projects/blade-meridian-banner.png",
+    imagenLogo: "/projects/blade-meridian-icon.png",
+    imagenAlt: "Paisaje del videojuego Blade Meridian",
+    urlSitio: "https://blademeridian.freemyip.com:3000/",
+  },
+  {
     id: "trabajoCiclo-fastAPI-find-my-pet",
     categoria: "Aplicación web",
     tipo: "aplicacion" as const,

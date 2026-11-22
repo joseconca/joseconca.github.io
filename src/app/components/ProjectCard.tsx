@@ -12,6 +12,19 @@ export default function ProjectCard({ proyecto, index, idioma, destacado = false
   const t = textos[idioma].inicio;
   return (
     <article className={`project-card${proyecto.tipo === "juego" ? " project-card-game" : ""}`}>
+      {proyecto.imagen ? (
+        <div className="project-media">
+          <img
+            className="project-media-background"
+            src={proyecto.imagen}
+            alt={proyecto.imagenAlt || proyecto.titulo}
+            loading="lazy"
+          />
+          {proyecto.imagenLogo ? (
+            <img className="project-media-logo" src={proyecto.imagenLogo} alt="" aria-hidden="true" loading="lazy" />
+          ) : null}
+        </div>
+      ) : null}
       <div>
         <div className="project-heading">
           <span className="project-index">
@@ -39,6 +52,11 @@ export default function ProjectCard({ proyecto, index, idioma, destacado = false
           {proyecto.urlDirecto ? (
             <a href={proyecto.urlDirecto} target="_blank" rel="noreferrer" className="project-link">
               {proyecto.demoTipo === "video" ? t.verVideo : t.verDemo} <span aria-hidden="true">↗</span>
+            </a>
+          ) : null}
+          {proyecto.urlSitio ? (
+            <a href={proyecto.urlSitio} target="_blank" rel="noreferrer" className="project-link">
+              {t.visitarSitio} <span aria-hidden="true">↗</span>
             </a>
           ) : null}
           {proyecto.estado ? <span className="project-state">{proyecto.estado}</span> : null}

@@ -20,7 +20,7 @@ export const textos = {
     inicio: {
       etiqueta: "Portfolio de desarrollo de software",
       explorarProyectos: "Ver proyectos",
-      disponibilidad: "Disponible para oportunidades de desarrollo en remoto desde Gran Canaria",
+      disponibilidad: "Remoto · España",
       puntosFuertesLabel: "Especialidades",
       puntosFuertes: ["Desarrollo de aplicaciones", "Testing y buenas prácticas", "Proyectos propios"],
       competenciasCompletas: "Consultar todas las competencias en el CV",
@@ -42,6 +42,7 @@ export const textos = {
       interesDescripcion: "Disfruto los videojuegos y me interesa comprender cómo están construidos. Por eso también desarrollo proyectos interactivos: desde un RPG web con sistemas de progresión y combate hasta un juego educativo sobre historia de la informática.",
       interesAccion: "Explorar proyectos interactivos",
       verVideo: "Ver vídeo",
+      visitarSitio: "Web del proyecto",
       proyectoPrivado: "Código privado (TFG en curso)",
       etiquetaProyecto: "PROYECTO",
       codigoFuente: "Código fuente",
@@ -81,7 +82,7 @@ export const textos = {
     inicio: {
       etiqueta: "Software development portfolio",
       explorarProyectos: "View projects",
-      disponibilidad: "Available for remote software development roles from the Canary Islands",
+      disponibilidad: "Remote · Spain",
       puntosFuertesLabel: "Key strengths",
       puntosFuertes: ["Application development", "Testing and clean code", "Personal projects"],
       competenciasCompletas: "See the complete skill set in my CV",
@@ -103,6 +104,7 @@ export const textos = {
       interesDescripcion: "I enjoy playing games and understanding how they work. That curiosity also drives my interactive projects, from a browser RPG with character progression and turn-based combat to an educational game about computing history.",
       interesAccion: "Explore interactive projects",
       verVideo: "Watch video",
+      visitarSitio: "Project website",
       proyectoPrivado: "Private source code (degree project in progress)",
       etiquetaProyecto: "PROJECT",
       codigoFuente: "Source code",
