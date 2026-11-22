@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getPortfolio, rutaIdioma } from "@/data/portfolio";
+import ThemeToggle from "@/app/components/ThemeToggle";
 import { textos, type Idioma } from "@/data/textos";
 
 const secciones = [
@@ -27,7 +28,7 @@ export default function Navbar() {
       <div className="site-nav-inner">
         <Link href={rutaIdioma(idioma, "/")} className="site-brand" aria-label={t.inicioAccesible}>
           <span className="site-brand-mark" aria-hidden="true">JC</span>
-          <span>Jose Conca <span className="text-slate-500 font-normal">/ Software</span></span>
+          <span>Jose Conca <span className="brand-suffix">/ Software</span></span>
         </Link>
         <div className="site-nav-links">
           {secciones.map(({ ruta, key }) => (
@@ -36,6 +37,7 @@ export default function Navbar() {
               {t[key]}
             </Link>
           ))}
+          <ThemeToggle idioma={idioma} />
           <div className="language-switch" role="group" aria-label={t.selectorIdioma}>
             {(["es", "en"] as const).map((opcion) => (
               <Link key={opcion} href={rutaIdioma(opcion, seccionActual)}
