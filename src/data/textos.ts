@@ -18,22 +18,20 @@ export const textos = {
       inicioAccesible: "Jose Conca, inicio"
     },
     inicio: {
-      etiqueta: "Portfolio de desarrollo de software",
+      etiqueta: "Desarrollo de software",
       explorarProyectos: "Ver proyectos",
       disponibilidad: "Remoto · España",
-      puntosFuertesLabel: "Especialidades",
-      puntosFuertes: ["Desarrollo de aplicaciones", "Testing y buenas prácticas", "Proyectos propios"],
       competenciasCompletas: "Consultar todas las competencias en el CV",
       retratoAlt: "Retrato de",
       stackEtiqueta: "Stack técnico",
       stackTitulo: "Tecnologías y competencias",
       stackDescripcion: "Lenguajes y herramientas que utilizo para crear aplicaciones, resolver problemas y cuidar la calidad del código.",
-      proyectosEtiqueta: "Trabajo seleccionado",
+      proyectosEtiqueta: "Proyectos personales",
       proyectosTitulo: "Proyectos destacados",
       proyectosDescripcion: "Aplicaciones útiles, experiencias interactivas y videojuegos donde exploro arquitectura, interfaces y lógica de negocio.",
       todosLosProyectos: "Ver todos los proyectos",
-      contactoEtiqueta: "Contacto",
-      contactoTitulo: "¿Hablamos de software?",
+      contactoEtiqueta: "Oportunidades profesionales",
+      contactoTitulo: "Contacto",
       contactoDescripcion: "Busco oportunidades de desarrollo de software, preferiblemente en remoto. Me interesa colaborar en proyectos donde pueda aportar, seguir aprendiendo y cuidar la calidad del código.",
       contactar: "Contactar por correo",
       verTrayectoria: "Ver trayectoria",
@@ -51,7 +49,8 @@ export const textos = {
       listado: "Listado de proyectos"
     },
     trayectoria: {
-      etiqueta: "Experiencia y aprendizaje", titulo: "Trayectoria",
+      titulo: "Trayectoria",
+      experienciaEtiqueta: "Experiencia", experienciaTitulo: "Experiencia profesional",
       descripcion: "Mi recorrido en desarrollo de software: experiencia profesional, colaboración en equipos y formación técnica orientada a construir aplicaciones mantenibles.",
       formacionEtiqueta: "Formación", formacionTitulo: "Formación académica",
       formacionDescripcion: "Estudios centrados en el desarrollo de aplicaciones y los fundamentos de la ingeniería informática."
@@ -76,22 +75,20 @@ export const textos = {
       inicioAccesible: "Jose Conca, home"
     },
     inicio: {
-      etiqueta: "Software development portfolio",
+      etiqueta: "Software development",
       explorarProyectos: "View projects",
       disponibilidad: "Remote · Spain",
-      puntosFuertesLabel: "Key strengths",
-      puntosFuertes: ["Application development", "Testing and clean code", "Personal projects"],
       competenciasCompletas: "See the complete skill set in my CV",
       retratoAlt: "Portrait of",
       stackEtiqueta: "Technical stack",
       stackTitulo: "Technologies and skills",
       stackDescripcion: "Languages and tools I use to build applications, solve problems and keep code reliable and maintainable.",
-      proyectosEtiqueta: "Selected work",
+      proyectosEtiqueta: "Personal projects",
       proyectosTitulo: "Featured projects",
       proyectosDescripcion: "Useful applications, interactive experiences and games exploring architecture, interfaces and business logic.",
       todosLosProyectos: "View all projects",
-      contactoEtiqueta: "Contact",
-      contactoTitulo: "Let's talk software",
+      contactoEtiqueta: "Professional opportunities",
+      contactoTitulo: "Contact",
       contactoDescripcion: "I am looking for software development opportunities, preferably remote. I enjoy contributing to projects, learning new things and delivering maintainable code.",
       contactar: "Send an email",
       verTrayectoria: "View experience",
@@ -109,7 +106,8 @@ export const textos = {
       listado: "Project listing"
     },
     trayectoria: {
-      etiqueta: "Experience and learning", titulo: "Experience",
+      titulo: "Experience",
+      experienciaEtiqueta: "Experience", experienciaTitulo: "Professional experience",
       descripcion: "My software development journey: professional experience, teamwork and technical education focused on maintainable applications.",
       formacionEtiqueta: "Education", formacionTitulo: "Education",
       formacionDescripcion: "Studies in application development and the fundamentals of computer engineering."
