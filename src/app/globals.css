@@ -39,7 +39,8 @@
   --paper-grain: rgba(225, 216, 200, .035);
   --paper-rule: rgba(221, 204, 177, .16);
   --shadow: rgba(0, 0, 0, .14);
-  --map-opacity: .85;
+  --page-artwork: url("/backgrounds/artbook-charcoal.webp");
+  --artwork-opacity: .44;
   --font-story: "Marcellus", "Palatino Linotype", Georgia, serif;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -83,7 +84,8 @@
   --paper-grain: rgba(60, 50, 40, .045);
   --paper-rule: rgba(75, 60, 45, .14);
   --shadow: rgba(57, 44, 29, .08);
-  --map-opacity: .92;
+  --page-artwork: url("/backgrounds/artbook-parchment.webp");
+  --artwork-opacity: .31;
 }
 
 @theme inline {
@@ -103,15 +105,28 @@ html {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   margin: 0;
   color: var(--foreground);
   background-color: var(--background);
-  /* Tramado de tinta apenas visible; no hay fotografías ni ilustración temática. */
-  background-image: radial-gradient(var(--paper-grain) .65px, transparent .65px);
-  background-size: 7px 7px;
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Fondos generados: detrás de la web completa, no en las tarjetas ni en la cabecera. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--page-artwork);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: var(--artwork-opacity);
 }
 
 ::selection {
@@ -230,6 +245,8 @@ button:focus-visible {
 }
 
 .site-main {
+  position: relative;
+  z-index: 1;
   width: min(100% - 2rem, 1120px);
   margin: 0 auto;
   padding: clamp(2.5rem, 6vw, 5rem) 0;
@@ -237,6 +254,8 @@ button:focus-visible {
 }
 
 .site-footer {
+  position: relative;
+  z-index: 1;
   border-top: 1px solid var(--border);
   color: var(--text-subtle);
   text-align: center;
@@ -279,22 +298,6 @@ button:focus-visible {
   border-radius: 5px;
   background: var(--hero-background);
   box-shadow: 0 14px 35px var(--shadow);
-}
-
-/* Cartografía de exploración: única referencia ilustrada a los JRPG,
-   tenue y sin interferir con el texto o la fotografía. */
-.hero-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("/overworld-topography.svg");
-  background-repeat: no-repeat;
-  background-position: right -60px center;
-  background-size: 118% auto;
-  opacity: var(--map-opacity);
-  -webkit-mask-image: linear-gradient(to right, transparent 19%, #000 61%);
-  mask-image: linear-gradient(to right, transparent 19%, #000 61%);
-  pointer-events: none;
 }
 
 .hero-panel::after {
@@ -946,13 +949,6 @@ button:focus-visible {
 }
 
 @media (max-width: 820px) {
-  .hero-panel::before {
-    background-position: center top;
-    background-size: auto 76%;
-    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 82%);
-    mask-image: linear-gradient(to bottom, #000, transparent 82%);
-  }
-
   .site-nav-inner {
     width: min(100% - 1.5rem, 1120px);
     min-height: 0;
@@ -996,11 +992,6 @@ button:focus-visible {
 }
 
 @media (max-width: 560px) {
-  .hero-panel::before {
-    background-size: auto 55%;
-    opacity: calc(var(--map-opacity) * .72);
-  }
-
   .site-main {
     width: min(100% - 1.25rem, 1120px);
     padding: 2rem 0 3rem;
@@ -1128,9 +1119,9 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: .48rem;
-  min-height: 40px;
-  padding: .5rem .7rem;
+  width: 40px;
+  height: 40px;
+  padding: 0;
   border: 1px solid var(--border);
   border-radius: 3px;
   background: var(--panel-background);
@@ -1157,6 +1148,5 @@ button:focus-visible {
 }
 
 @media (max-width: 560px) {
-  .theme-toggle { min-height: 36px; padding: .45rem .6rem; }
-  .theme-toggle span { display: none; }
+  .theme-toggle { width: 36px; height: 36px; }
 }
