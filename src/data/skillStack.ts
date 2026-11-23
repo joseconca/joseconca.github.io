@@ -13,7 +13,7 @@ export const skillStack = {
   },
   "Calidad, herramientas y despliegue": {
     descripcion: "Control de versiones, pruebas de software, contenedores y despliegue.",
-    tecnologias: ["Git", "Docker", "Azure", "Postman", "Vitest", "Playwright", "Cypress", "Pruebas unitarias, de integración y de extremo a extremo"],
+    tecnologias: ["Git", "Docker", "Azure", "Postman", "Vitest", "Playwright", "Cypress"],
   },
   "IA aplicada al desarrollo": {
     descripcion: "Uso de asistentes y agentes de programación como apoyo a la implementación, depuración y revisión del código.",
