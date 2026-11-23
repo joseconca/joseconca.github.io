@@ -12,17 +12,17 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
 
   return (
     <div className="page-stack">
-      <section className="hero-panel">
-        <div className="hero-copy">
-          <span className="eyebrow">{t.etiqueta}</span>
+      <section className="intro-section">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">{t.etiqueta}</span>
+          </div>
+        </div>
+        <div className="hero-panel">
+          <div className="hero-copy">
           <h1 className="hero-title">{datosContacto.nombre}</h1>
           <p className="hero-role">{datosContacto.rol}</p>
           <p className="hero-description">{datosContacto.perfilProfesional}</p>
-          <div className="hero-highlights" aria-label={t.puntosFuertesLabel}>
-            {t.puntosFuertes.map((punto) => (
-              <span key={punto} className="hero-highlight">{punto}</span>
-            ))}
-          </div>
           <div className="hero-actions">
             <a href={datosContacto.curriculumPdf} download className="button-primary">
               {textos[idioma].navegacion.descargaCv} <span aria-hidden="true">↓</span>
@@ -39,9 +39,10 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
             <a href={datosContacto.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
           </div>
         </div>
-        <div className="hero-aside">
-          <div className="hero-avatar-frame">
-            <img src="/avatar.jpg" alt={`${t.retratoAlt} ${datosContacto.nombre}`} className="hero-avatar" />
+          <div className="hero-aside">
+            <div className="hero-avatar-frame">
+              <img src="/avatar.jpg" alt={`${t.retratoAlt} ${datosContacto.nombre}`} className="hero-avatar" />
+            </div>
           </div>
         </div>
       </section>
@@ -95,17 +96,23 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
         </div>
       </section>
 
-      <section className="contact-panel">
-        <span className="eyebrow">{t.contactoEtiqueta}</span>
-        <h2>{t.contactoTitulo}</h2>
-        <p>{t.contactoDescripcion}</p>
-        <div className="hero-actions">
+      <section className="contact-section">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">{t.contactoEtiqueta}</span>
+            <h2 className="section-title">{t.contactoTitulo}</h2>
+          </div>
+        </div>
+        <div className="contact-panel">
+          <p>{t.contactoDescripcion}</p>
+          <div className="hero-actions">
           <a href={`mailto:${datosContacto.email}`} className="button-primary">
             {t.contactar} <span aria-hidden="true">↗</span>
           </a>
-          <Link href={rutaIdioma(idioma, "/trayectoria")} className="button-secondary">
-            {t.verTrayectoria}
-          </Link>
+            <Link href={rutaIdioma(idioma, "/trayectoria")} className="button-secondary">
+              {t.verTrayectoria}
+            </Link>
+          </div>
         </div>
       </section>
     </div>
