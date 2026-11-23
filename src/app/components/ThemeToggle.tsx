@@ -12,10 +12,17 @@ function getTema(): Tema {
 }
 
 function subscribe(onChange: () => void) {
-  window.addEventListener("storage", onChange);
+  const onStorage = (event: StorageEvent) => {
+    if (event.key !== KEY) return;
+    const next: Tema = event.newValue === "light" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    document.documentElement.style.colorScheme = next;
+    onChange();
+  };
+  window.addEventListener("storage", onStorage);
   window.addEventListener(CHANGE_EVENT, onChange);
   return () => {
-    window.removeEventListener("storage", onChange);
+    window.removeEventListener("storage", onStorage);
     window.removeEventListener(CHANGE_EVENT, onChange);
   };
 }
