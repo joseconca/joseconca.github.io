@@ -279,7 +279,7 @@ button:focus-visible {
   box-shadow: 0 14px 35px var(--shadow);
 }
 
-/* Anillos decorativos tenues inspirados en los menús de JRPG, sin animaciones. */
+/* Numeración de portada al estilo de un catálogo editorial. */
 .hero-panel::before {
   content: "01 /";
   position: absolute;
