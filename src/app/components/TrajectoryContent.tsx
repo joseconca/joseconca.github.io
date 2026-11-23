@@ -6,13 +6,19 @@ export default function TrajectoryContent({ idioma }: { idioma: Idioma }) {
   const t = textos[idioma].trayectoria;
 
   return (
-    <div className="page-stack">
-      <section>
-        <header className="page-header">
-          <span className="eyebrow">{t.etiqueta}</span>
-          <h1 className="page-title">{t.titulo}</h1>
-          <p className="page-intro">{t.descripcion}</p>
-        </header>
+    <div className="page-stack trajectory-page">
+      <header className="page-header trajectory-page-header">
+        <h1 className="page-title">{t.titulo}</h1>
+      </header>
+
+      <section aria-labelledby="experience-heading">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">{t.experienciaEtiqueta}</span>
+            <h2 id="experience-heading" className="section-title">{t.experienciaTitulo}</h2>
+            <p className="section-description">{t.descripcion}</p>
+          </div>
+        </div>
         <div className="timeline-list">
           {experienciaProfesional.map((experiencia) => (
             <article key={experiencia.id} className="timeline-card">
@@ -43,11 +49,11 @@ export default function TrajectoryContent({ idioma }: { idioma: Idioma }) {
         </div>
       </section>
 
-      <section>
+      <section aria-labelledby="education-heading">
         <div className="section-heading">
           <div>
             <span className="eyebrow">{t.formacionEtiqueta}</span>
-            <h2 className="section-title">{t.formacionTitulo}</h2>
+            <h2 id="education-heading" className="section-title">{t.formacionTitulo}</h2>
             <p className="section-description">{t.formacionDescripcion}</p>
           </div>
         </div>
