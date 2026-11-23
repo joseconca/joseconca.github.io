@@ -39,6 +39,7 @@
   --paper-grain: rgba(225, 216, 200, .035);
   --paper-rule: rgba(221, 204, 177, .16);
   --shadow: rgba(0, 0, 0, .14);
+  --map-opacity: .85;
   --font-story: "Marcellus", "Palatino Linotype", Georgia, serif;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -82,6 +83,7 @@
   --paper-grain: rgba(60, 50, 40, .045);
   --paper-rule: rgba(75, 60, 45, .14);
   --shadow: rgba(57, 44, 29, .08);
+  --map-opacity: .92;
 }
 
 @theme inline {
@@ -279,16 +281,19 @@ button:focus-visible {
   box-shadow: 0 14px 35px var(--shadow);
 }
 
-/* Numeración de portada al estilo de un catálogo editorial. */
+/* Cartografía de exploración: única referencia ilustrada a los JRPG,
+   tenue y sin interferir con el texto o la fotografía. */
 .hero-panel::before {
-  content: "01 /";
+  content: "";
   position: absolute;
-  top: 1.2rem;
-  right: 1.5rem;
-  color: var(--text-subtle);
-  font: 500 .7rem var(--font-geist-mono), monospace;
-  letter-spacing: .1em;
-  opacity: .65;
+  inset: 0;
+  background-image: url("/overworld-topography.svg");
+  background-repeat: no-repeat;
+  background-position: right -60px center;
+  background-size: 118% auto;
+  opacity: var(--map-opacity);
+  -webkit-mask-image: linear-gradient(to right, transparent 19%, #000 61%);
+  mask-image: linear-gradient(to right, transparent 19%, #000 61%);
   pointer-events: none;
 }
 
@@ -417,10 +422,12 @@ button:focus-visible {
 
 .hero-avatar-frame::before,
 .hero-avatar-frame::after {
-  right: -1px;
-  bottom: -1px;
-  border-right: 2px solid var(--accent-warm);
-  border-bottom: 2px solid var(--accent-warm);
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 23px;
+  height: 23px;
+  pointer-events: none;
 }
 
 .hero-avatar-frame::before {
@@ -433,9 +440,8 @@ button:focus-visible {
 .hero-avatar-frame::after {
   right: -1px;
   bottom: -1px;
-  border-right: 2px solid var(--accent-strong);
-  border-bottom: 2px solid var(--accent-strong);
-  border-radius: 0 0 15px 0;
+  border-right: 2px solid var(--accent-warm);
+  border-bottom: 2px solid var(--accent-warm);
 }
 
 .hero-avatar {
@@ -495,7 +501,7 @@ button:focus-visible {
 }
 
 .section-title::before {
-  content: "—";
+  content: "◇";
   color: var(--accent-strong);
   font-family: var(--font-geist-mono), monospace;
   font-size: .7em;
@@ -940,6 +946,13 @@ button:focus-visible {
 }
 
 @media (max-width: 820px) {
+  .hero-panel::before {
+    background-position: center top;
+    background-size: auto 76%;
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 82%);
+    mask-image: linear-gradient(to bottom, #000, transparent 82%);
+  }
+
   .site-nav-inner {
     width: min(100% - 1.5rem, 1120px);
     min-height: 0;
@@ -983,6 +996,11 @@ button:focus-visible {
 }
 
 @media (max-width: 560px) {
+  .hero-panel::before {
+    background-size: auto 55%;
+    opacity: calc(var(--map-opacity) * .72);
+  }
+
   .site-main {
     width: min(100% - 1.25rem, 1120px);
     padding: 2rem 0 3rem;
