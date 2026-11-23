@@ -17,7 +17,7 @@
   --text-secondary: #b2aea4;
   --text-subtle: #9c9b92;
   --accent: #dfbb88;
-  --accent-strong: #bc6259;
+  --accent-strong: #db8273;
   --accent-warm: #c99c69;
   --accent-contrast: #211e1b;
   --link-hover: #ffe0ae;
@@ -165,7 +165,7 @@ button:focus-visible {
   height: 38px;
   border: 1px solid var(--border-strong);
   border-radius: 3px;
-  background: var(--accent-strong);
+  background: #7d3f3d;
   color: #fff7ee;
   font: 700 .8rem var(--font-geist-mono), monospace;
   letter-spacing: -.08em;
@@ -389,9 +389,9 @@ button:focus-visible {
 }
 
 .button-secondary {
-  border: 1px solid rgba(148, 163, 184, .24);
-  background: rgba(148, 163, 184, .06);
-  color: #dbe6f5;
+  border: 1px solid var(--border-strong);
+  background: var(--button-secondary-background);
+  color: var(--button-secondary-text);
 }
 
 .button-secondary:hover {
