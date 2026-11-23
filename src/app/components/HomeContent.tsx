@@ -20,25 +20,25 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
         </div>
         <div className="hero-panel">
           <div className="hero-copy">
-          <h1 className="hero-title">{datosContacto.nombre}</h1>
-          <p className="hero-role">{datosContacto.rol}</p>
-          <p className="hero-description">{datosContacto.perfilProfesional}</p>
-          <div className="hero-actions">
-            <a href={datosContacto.curriculumPdf} download className="button-primary">
-              {textos[idioma].navegacion.descargaCv} <span aria-hidden="true">↓</span>
-            </a>
-            <Link href={rutaIdioma(idioma, "/proyectos")} className="button-secondary">
-              {t.explorarProyectos} <span aria-hidden="true">↗</span>
-            </Link>
+            <h1 className="hero-title">{datosContacto.nombre}</h1>
+            <p className="hero-role">{datosContacto.rol}</p>
+            <p className="hero-description">{datosContacto.perfilProfesional}</p>
+            <div className="hero-actions">
+              <a href={datosContacto.curriculumPdf} download className="button-primary">
+                {textos[idioma].navegacion.descargaCv} <span aria-hidden="true">↓</span>
+              </a>
+              <Link href={rutaIdioma(idioma, "/proyectos")} className="button-secondary">
+                {t.explorarProyectos} <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+            <div className="contact-strip">
+              <span>{datosContacto.localizacion}</span>
+              <span className="contact-availability">{t.disponibilidad}</span>
+              <a href={`mailto:${datosContacto.email}`}>{datosContacto.email}</a>
+              <a href={datosContacto.github} target="_blank" rel="noreferrer">GitHub ↗</a>
+              <a href={datosContacto.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            </div>
           </div>
-          <div className="contact-strip">
-            <span>{datosContacto.localizacion}</span>
-            <span className="contact-availability">{t.disponibilidad}</span>
-            <a href={`mailto:${datosContacto.email}`}>{datosContacto.email}</a>
-            <a href={datosContacto.github} target="_blank" rel="noreferrer">GitHub ↗</a>
-            <a href={datosContacto.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
-          </div>
-        </div>
           <div className="hero-aside">
             <div className="hero-avatar-frame">
               <img src="/avatar.jpg" alt={`${t.retratoAlt} ${datosContacto.nombre}`} className="hero-avatar" />
@@ -106,9 +106,9 @@ export default function HomeContent({ idioma }: { idioma: Idioma }) {
         <div className="contact-panel">
           <p>{t.contactoDescripcion}</p>
           <div className="hero-actions">
-          <a href={`mailto:${datosContacto.email}`} className="button-primary">
-            {t.contactar} <span aria-hidden="true">↗</span>
-          </a>
+            <a href={`mailto:${datosContacto.email}`} className="button-primary">
+              {t.contactar} <span aria-hidden="true">↗</span>
+            </a>
             <Link href={rutaIdioma(idioma, "/trayectoria")} className="button-secondary">
               {t.verTrayectoria}
             </Link>
