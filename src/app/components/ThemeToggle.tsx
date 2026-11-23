@@ -1,35 +1,40 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import type { Idioma } from "@/data/textos";
 
 type Tema = "dark" | "light";
 const KEY = "jc-portfolio-theme";
+const CHANGE_EVENT = "jc-portfolio-theme-change";
+
+function getTema(): Tema {
+  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
+}
+
+function subscribe(onChange: () => void) {
+  window.addEventListener("storage", onChange);
+  window.addEventListener(CHANGE_EVENT, onChange);
+  return () => {
+    window.removeEventListener("storage", onChange);
+    window.removeEventListener(CHANGE_EVENT, onChange);
+  };
+}
+
+/** El valor del servidor es estable para evitar diferencias de hidratación. */
+function getServerTema(): Tema { return "dark"; }
 
 export default function ThemeToggle({ idioma }: { idioma: Idioma }) {
-  const [tema, setTema] = useState<Tema | null>(null);
-
-  useEffect(() => {
-    const current: Tema = document.documentElement.dataset.theme === "light" ? "light" : "dark";
-    setTema(current);
-
-    const sync = (event: StorageEvent) => {
-      if (event.key !== KEY) return;
-      const next: Tema = event.newValue === "light" ? "light" : "dark";
-      document.documentElement.dataset.theme = next;
-      document.documentElement.style.colorScheme = next;
-      setTema(next);
-    };
-    window.addEventListener("storage", sync);
-    return () => window.removeEventListener("storage", sync);
-  }, []);
-
+  const tema = useSyncExternalStore(subscribe, getTema, getServerTema);
   const changeTheme = () => {
-    const next: Tema = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+    const next: Tema = getTema() === "light" ? "dark" : "light";
     document.documentElement.dataset.theme = next;
     document.documentElement.style.colorScheme = next;
-    try { window.localStorage.setItem(KEY, next); } catch { /* La navegación sigue funcionando sin almacenamiento. */ }
-    setTema(next);
+    try {
+      window.localStorage.setItem(KEY, next);
+    } catch {
+      // El botón sigue funcionando si el navegador bloquea el almacenamiento.
+    }
+    window.dispatchEvent(new Event(CHANGE_EVENT));
   };
 
   const label = idioma === "es"
